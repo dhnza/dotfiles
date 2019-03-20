@@ -148,6 +148,10 @@ let g:vim_markdown_folding_disabled = 1
 nnoremap <C-f> :Files<Cr>
 " Search inisde files with <C-g>
 nnoremap <C-g> :Rg<Cr>
+" Search lines in open buffers with <C-s>
+nnoremap <C-l> :Lines<Cr>
+" Search vim commands with <C-p>
+nnoremap <C-p> :Commands<Cr>
 
 " ------------------------------
 "    Tabularize
