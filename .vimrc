@@ -19,9 +19,15 @@ set autoindent
 set splitbelow
 set splitright
 
-" Open quickfix list in new tab
-set switchbuf+=usetab,newtab
+" Persistent undo
+set undodir=~/.vim/undodir
+set undofile "Maintain undo history between sessions
 
+" ------------------------------
+"   Shortcuts
+" ------------------------------
+" Open quickfix list item in new tab
+nmap <C-t> <C-w><CR><C-w>T
 
 " =============================
 "         Vim Plug
@@ -63,9 +69,6 @@ Plug 'airblade/vim-gitgutter'
 " Pretty status line
 Plug 'itchyny/lightline.vim'
 
-" File explorer
-Plug 'scrooloose/nerdtree'
-
 " FZF, both command and plugin installation
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -91,12 +94,6 @@ call plug#end()
 " ------------------------------
 set background=dark
 colorscheme solarized
-
-" ------------------------------
-"    NerdTree
-" ------------------------------
-" Toggle with Ctrl+n
-map <C-n> :NERDTreeToggle<CR>
 
 " ------------------------------
 "    Lightline
