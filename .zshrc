@@ -103,6 +103,7 @@ alias ll='ls -lhF'
 alias bcl='bc -l'
 alias grin='grep -rin'
 alias git-graph='git log --graph --color --oneline --decorate'
+alias g-='git-graph'
 
 #==============================================================================
 #  Custom .zshrc
