@@ -149,6 +149,8 @@ nnoremap <C-g> :Rg<Cr>
 nnoremap <C-l> :Lines<Cr>
 " Search vim commands with <C-p>
 nnoremap <C-p> :Commands<Cr>
+" Search open buffers with <C-b>
+nnoremap <C-b> :Buffers<Cr>
 
 " ------------------------------
 "    Tabularize
