@@ -27,6 +27,7 @@ zplug "plugins/fancy-ctrl-z", from:oh-my-zsh
 zplug "plugins/fzf", from:oh-my-zsh
 
 # Third-party plugins
+zplug "romkatv/powerlevel10k", use:powerlevel10k.zsh-theme
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "supercrabtree/k"
@@ -43,11 +44,29 @@ fi
 zplug load
 
 #------------------------------------------------
-#    Plugin Configuration
+#    Powerlevel10k
+#------------------------------------------------
+# Only show hostname in context
+POWERLEVEL9K_CONTEXT_TEMPLATE="@%m"
+
+# Shorten prompt paths
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=""
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+
+# Customize git repository segment
+POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind git-remotebranch git-tagname)
+
+# Customize right promopt
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time)
+
+#------------------------------------------------
+#    Other Plugin Configuration
 #------------------------------------------------
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
 # For coloring man pages
 export GROFF_NO_SGR=1 
+
 
 #==============================================================================
 #  FZF 
