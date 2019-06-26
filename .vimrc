@@ -45,8 +45,11 @@ call plug#begin('~/.vim/plugged')
 " High-light current word
 Plug 'RRethy/vim-illuminate'
 
-" Auto-commenting
+" Commenting shortcuts
 Plug 'tomtom/tcomment_vim'
+
+" Useful shell commands inside vim
+Plug 'tpope/vim-eunuch'
 
 " Surrounding text
 Plug 'tpope/vim-surround'
