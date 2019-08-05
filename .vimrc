@@ -166,6 +166,17 @@ vmap <Leader>a: :Tabularize /:<CR>
 
 
 " =============================
+"           Functions
+" =============================
+function! DeleteInactiveBuffers()
+    let tpbl=[]
+    call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+    for buf in filter(range(1, bufnr('$')), 'buflisted(v:val) && index(tpbl, v:val)==-1')
+        silent exec 'bd' buf
+    endfor
+endfunction
+
+" =============================
 "        Miscellaneous
 " =============================
 " Set the filetype based on the file's extension, but only if
