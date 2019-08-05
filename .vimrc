@@ -1,4 +1,13 @@
 " =============================
+"       Utility Functions
+" =============================
+function! SilentMkdir(path)
+    if !isdirectory(a:path)
+        call mkdir(a:path, "p", 0700)
+    endif
+endfunction
+
+" =============================
 "         Vim Settings
 " =============================
 " Basics
@@ -20,8 +29,15 @@ set splitbelow
 set splitright
 
 " Persistent undo
-set undodir=~/.vim/undodir
 set undofile "Maintain undo history between sessions
+set undodir=~/.vim/undodir
+call SilentMkdir($HOME . "/.vim/undodir")
+
+" Write swap and backup files in different directory
+set backupdir=~/.vim/backupdir//,/tmp//
+set directory=~/.vim/swapfiles//,/tmp//
+call SilentMkdir($HOME . "/.vim/backupdir")
+call SilentMkdir($HOME . "/.vim/swapfiles")
 
 " ------------------------------
 "   Shortcuts
