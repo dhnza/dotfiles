@@ -57,6 +57,9 @@ POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 # Customize git repository segment
 POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind git-remotebranch git-tagname)
 
+# Customize left promopt
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(anaconda context dir vcs)
+
 # Customize right promopt
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time)
 
