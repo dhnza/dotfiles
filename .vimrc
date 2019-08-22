@@ -73,6 +73,9 @@ Plug 'tpope/vim-surround'
 " '.' command support for plugins
 Plug 'tpope/vim-repeat'
 
+" Handy navigation shortcuts
+Plug 'tpope/vim-unimpaired'
+
 " Aligning text
 Plug 'godlygeek/tabular'
 
