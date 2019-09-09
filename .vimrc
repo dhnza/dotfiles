@@ -52,6 +52,22 @@ nmap <Leader>wq :wq<CR>
 " Open quickfix list item in new tab
 nmap <C-t> <C-w><CR><C-w>T
 
+
+" =============================
+"     Commands & Functions
+" =============================
+" Run makeprg and open quicfix window
+command -nargs=* Make make! <args> | cwindow
+
+function! DeleteInactiveBuffers()
+    let tpbl=[]
+    call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
+    for buf in filter(range(1, bufnr('$')), 'buflisted(v:val) && index(tpbl, v:val)==-1')
+        silent exec 'bd' buf
+    endfor
+endfunction
+
+
 " =============================
 "         Vim Plug
 " =============================
@@ -190,17 +206,6 @@ vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:<CR>
 vmap <Leader>a: :Tabularize /:<CR>
 
-
-" =============================
-"           Functions
-" =============================
-function! DeleteInactiveBuffers()
-    let tpbl=[]
-    call map(range(1, tabpagenr('$')), 'extend(tpbl, tabpagebuflist(v:val))')
-    for buf in filter(range(1, bufnr('$')), 'buflisted(v:val) && index(tpbl, v:val)==-1')
-        silent exec 'bd' buf
-    endfor
-endfunction
 
 " =============================
 "        Miscellaneous
