@@ -28,6 +28,10 @@ set autoindent
 set splitbelow
 set splitright
 
+" Use <Space> as leader key
+let mapleader="\<Space>"
+noremap <Space> <Nop>
+
 " Persistent undo
 set undofile "Maintain undo history between sessions
 set undodir=~/.vim/undodir
@@ -42,6 +46,9 @@ call SilentMkdir($HOME . "/.vim/swapfiles")
 " ------------------------------
 "   Shortcuts
 " ------------------------------
+" Quick save
+nmap <Leader>w :w<CR>
+nmap <Leader>wq :wq<CR>
 " Open quickfix list item in new tab
 nmap <C-t> <C-w><CR><C-w>T
 
