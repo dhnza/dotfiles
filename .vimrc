@@ -221,3 +221,6 @@ au BufRead,BufNewFile *.sbatch set filetype=sh
 
 " Use git commit highlighting for dotfiles commits
 au BufRead,BufNewFile COMMIT_EDITMSG set filetype=gitcommit
+
+" Highlight misspelled spelled words in red
+hi SpellBad cterm=underline ctermfg=red
