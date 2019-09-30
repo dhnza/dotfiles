@@ -32,6 +32,10 @@ set splitright
 let mapleader="\<Space>"
 noremap <Space> <Nop>
 
+" Use per-project vim settings
+set exrc
+set secure "only run commands in .vimrc files owned by me
+
 " Persistent undo
 set undofile "Maintain undo history between sessions
 set undodir=~/.vim/undodir
