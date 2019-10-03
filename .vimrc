@@ -103,6 +103,9 @@ Plug 'tpope/vim-repeat'
 " Handy navigation shortcuts
 Plug 'tpope/vim-unimpaired'
 
+" Manipulate variants of a word
+Plug 'tpope/vim-abolish'
+
 " Aligning text
 Plug 'godlygeek/tabular'
 
