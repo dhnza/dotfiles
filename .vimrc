@@ -32,10 +32,6 @@ set splitright
 let mapleader="\<Space>"
 noremap <Space> <Nop>
 
-" Use per-project vim settings
-set exrc
-set secure "only run commands in .vimrc files owned by me
-
 " Persistent undo
 set undofile "Maintain undo history between sessions
 set undodir=~/.vim/undodir
@@ -227,3 +223,11 @@ au BufRead,BufNewFile COMMIT_EDITMSG set filetype=gitcommit
 
 " Highlight misspelled spelled words in red
 hi SpellBad cterm=underline ctermfg=red
+
+
+" =============================
+"     Per-Project Settings
+" =============================
+" Load settings from .projct_vimrc for all files in a project:
+"   autocmd BufReadPre,BufNewFile /patch/to/project/* source /path/to/.project_vimrc
+" BufReadPre loads settings BEFORE the file is read, so that autocmd settings work.
