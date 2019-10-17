@@ -126,6 +126,7 @@ alias bcl='bc -l'
 alias grin='grep -rin'
 alias git-graph='git log --graph --color --oneline --decorate'
 alias g-='git-graph'
+alias gdo='git diff origin/$(git rev-parse --abbrev-ref HEAD)'
 
 #==============================================================================
 #  Custom .zshrc
