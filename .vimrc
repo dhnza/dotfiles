@@ -13,8 +13,11 @@ endfunction
 " Basics
 syntax enable
 set number
+set relativenumber
 set cursorline
 set hlsearch
+set ignorecase
+set smartcase
 
 " Correct use of tabs
 set tabstop=4
