@@ -6,14 +6,14 @@
 
 Run the automatic installation script:
 ```sh
-curl -Ls https://gist.github.com/DeoxNA/6b384f52ce32342761cc00f9d26311fa/raw/dotfiles-install.sh | /bin/bash
+curl -Ls https://gist.github.com/dhnza/6b384f52ce32342761cc00f9d26311fa/raw/dotfiles-install.sh | /bin/bash
 ```
 
 ### Manual
 
 Clone dotfiles into a bare git repository. The git tracking information will be stored in `~/.dotfiles`.
 ```sh
-git clone --bare git@github.com:DeoxNA/dotfiles.git ~/.dotfiles
+git clone --bare git@github.com:dhnza/dotfiles.git ~/.dotfiles
 ```
 
 For convenience, create a `dotfiles` alias for managing the repositroy.
