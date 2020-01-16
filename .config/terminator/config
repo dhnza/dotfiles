@@ -1,0 +1,32 @@
+[global_config]
+  scroll_tabbar = True
+  title_transmit_bg_color = "#06195f"
+[keybindings]
+  split_horiz = <Primary><Alt>h
+  split_vert = <Primary><Alt>v
+  resize_up = <Shift><Super>Down
+  resize_down = <Shift><Super>Down
+  resize_left = <Shift><Super>Left
+  resize_right = <Shift><Super>Right
+  next_tab = <Alt>Right
+  prev_tab = <Alt>Left
+[profiles]
+  [[default]]
+    visible_bell = True
+    show_titlebar = False
+    background_color = "#002b36"
+    background_darkness = 0.97
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    foreground_color = "#839496"
+    palette = "#073642:#dc322f:#859900:#b58900:#268bd2:#d33682:#2aa198:#eee8d5:#002b36:#cb4b16:#586e75:#657b83:#839496:#6c71c4:#93a1a1:#fdf6e3"
+[layouts]
+  [[default]]
+    [[[child0]]]
+      parent = window0
+      profile = default
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
