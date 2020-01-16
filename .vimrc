@@ -35,6 +35,10 @@ set splitright
 let mapleader="\<Space>"
 noremap <Space> <Nop>
 
+" Use 'kj' to exit insert and command mode
+inoremap kj <esc>
+cnoremap kj <C-C>
+
 " Persistent undo
 set undofile "Maintain undo history between sessions
 set undodir=~/.vim/undodir
@@ -194,14 +198,21 @@ let g:vim_markdown_folding_disabled = 1
 " ------------------------------
 " Search files with <C-f>
 nnoremap <C-f> :Files<Cr>
+nnoremap <Leader>f :Files<CR>
 " Search inisde files with <C-g>
 nnoremap <C-g> :Rg<Cr>
+nnoremap <Leader>g :Rg<CR>
 " Search lines in open buffers with <C-s>
-nnoremap <C-l> :Lines<Cr>
+nnoremap <C-l> :BLines<Cr>
+nnoremap <C-L> :Lines<Cr>
+nnoremap <Leader>l :BLines<CR>
+nnoremap <Leader>L :Lines<CR>
 " Search vim commands with <C-p>
 nnoremap <C-p> :Commands<Cr>
+nnoremap <Leader>p :Commands<CR>
 " Search open buffers with <C-b>
 nnoremap <C-b> :Buffers<Cr>
+nnoremap <Leader>b :Buffers<CR>
 
 " ------------------------------
 "    Tabularize
