@@ -31,6 +31,9 @@ set autoindent
 set splitbelow
 set splitright
 
+" Tab completion in status bar
+set wildmenu
+
 " Use <Space> as leader key
 let mapleader="\<Space>"
 noremap <Space> <Nop>
@@ -58,6 +61,9 @@ nmap <Leader>w :w<CR>
 nmap <Leader>wq :wq<CR>
 " Open quickfix list item in new tab
 nmap <C-t> <C-w><CR><C-w>T
+" Move between tabs with <C-S-ARROW>
+noremap <C-S-RIGHT> gt
+noremap <C-S-LEFT> gT
 
 
 " =============================
@@ -196,23 +202,20 @@ let g:vim_markdown_folding_disabled = 1
 " ------------------------------
 "            FZF
 " ------------------------------
-" Search files with <C-f>
-nnoremap <C-f> :Files<Cr>
+" Search files
 nnoremap <Leader>f :Files<CR>
-" Search inisde files with <C-g>
-nnoremap <C-g> :Rg<Cr>
+" Search inisde files
 nnoremap <Leader>g :Rg<CR>
-" Search lines in open buffers with <C-s>
-nnoremap <C-l> :BLines<Cr>
-nnoremap <C-L> :Lines<Cr>
+" Search lines in open buffers
 nnoremap <Leader>l :BLines<CR>
 nnoremap <Leader>L :Lines<CR>
-" Search vim commands with <C-p>
-nnoremap <C-p> :Commands<Cr>
+" Search vim commands
 nnoremap <Leader>p :Commands<CR>
-" Search open buffers with <C-b>
-nnoremap <C-b> :Buffers<Cr>
+" Search open buffers
 nnoremap <Leader>b :Buffers<CR>
+" Search through tags
+nnoremap <Leader>t :BTags<CR>
+nnoremap <Leader>T :Tags<CR>
 
 " ------------------------------
 "    Tabularize
@@ -227,6 +230,9 @@ vmap <Leader>a: :Tabularize /:<CR>
 " =============================
 "        Miscellaneous
 " =============================
+" Highlight misspelled spelled words in red
+hi SpellBad cterm=underline ctermfg=red
+
 " Set the filetype based on the file's extension, but only if
 " 'filetype' has not already been set
 au BufRead,BufNewFile *.tpp set filetype=cpp
@@ -234,9 +240,6 @@ au BufRead,BufNewFile *.sbatch set filetype=sh
 
 " Use git commit highlighting for dotfiles commits
 au BufRead,BufNewFile COMMIT_EDITMSG set filetype=gitcommit
-
-" Highlight misspelled spelled words in red
-hi SpellBad cterm=underline ctermfg=red
 
 
 " =============================
