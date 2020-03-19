@@ -140,6 +140,9 @@ Plug 'plasticboy/vim-markdown'
 " Tab completion
 Plug 'ajh17/VimCompletesMe'
 
+" Snippets
+Plug 'SirVer/ultisnips'
+
 " Solarized colorscheme
 Plug 'altercation/vim-colors-solarized'
 
@@ -192,6 +195,18 @@ let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 " ------------------------------
 " Run automatically on all file types
 autocmd FileType vim let b:vcm_tab_complete = 'vim'
+
+" ------------------------------
+"    UltiSnips
+" ------------------------------
+" Set triggers that don't conflict with VimCompletesMe
+let g:UltiSnipsExpandTrigger = '<C-j>'
+let g:UltiSnipsListSnippets = '<C-l>'
+let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+
+" Open snippet editor in split window
+let g:UltiSnipsEditSplit = 'context'
 
 " ------------------------------
 "    Vim-Markdown
