@@ -66,7 +66,7 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time)
 #------------------------------------------------
 #    Other Plugin Configuration
 #------------------------------------------------
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=10'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=245'
 # For coloring man pages
 export GROFF_NO_SGR=1 
 

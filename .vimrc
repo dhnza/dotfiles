@@ -143,8 +143,9 @@ Plug 'ajh17/VimCompletesMe'
 " Snippets
 Plug 'SirVer/ultisnips'
 
-" Solarized colorscheme
+" Color schemes
 Plug 'altercation/vim-colors-solarized'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 " Initialize plugin system
 call plug#end()
@@ -154,10 +155,16 @@ call plug#end()
 "        Plugin settings
 " =============================
 " ------------------------------
-"   Solarized dark
+"   Color Scheme
 " ------------------------------
 set background=dark
-colorscheme solarized
+colorscheme onehalfdark
+" Enable 24-bit colors, if possible
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
 
 " ------------------------------
 "    Lightline
@@ -165,7 +172,7 @@ colorscheme solarized
 set laststatus=2
 set noshowmode
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'onehalfdark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
