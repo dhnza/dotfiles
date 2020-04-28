@@ -13,7 +13,7 @@ export DEFAULT_USER=david
 #==============================================================================
 # Load custom environment for this host
 HOST=$(hostname -s)
-SRC="$HOME/.zshenv.${HOST%%[0-9]}"
+SRC="$HOME/.zshenv.$(sed 's/\([a-zA-Z]\)[0-9]$/\1/' <<< $HOST)"
 if [[ -f "${SRC}" ]]; then
     source "${SRC}"
 fi

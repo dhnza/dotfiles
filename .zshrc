@@ -121,11 +121,10 @@ fix_vim() {
 # Use dotfiles command to manage the dotfiles repo
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-alias ll='ls -lhF'
+alias ll='ls --color=auto -lhF'
 alias bcl='bc -l'
 alias grin='grep -rin'
-alias git-graph='git log --graph --color --oneline --decorate'
-alias g-='git-graph'
+alias g-='git log --graph --color --oneline --decorate'
 alias gdo='git diff origin/$(git rev-parse --abbrev-ref HEAD)'
 
 #==============================================================================
@@ -133,7 +132,7 @@ alias gdo='git diff origin/$(git rev-parse --abbrev-ref HEAD)'
 #==============================================================================
 # Load custom .zshrc for this host
 HOST=$(hostname -s)
-SRC="$HOME/.zshrc.${HOST%%[0-9]}"
+SRC="$HOME/.zshrc.$(sed 's/\([a-zA-Z]\)[0-9]$/\1/' <<< $HOST)"
 if [[ -f "${SRC}" ]]; then
     source "${SRC}"
 fi
