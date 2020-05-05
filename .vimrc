@@ -65,11 +65,18 @@ nmap <C-t> <C-w><CR><C-w>T
 noremap <C-S-RIGHT> gt
 noremap <C-S-LEFT> gT
 
+" Define 'a line' and 'inside line' text objects
+"   al is the whole line, including all white space
+"   il is the 'text' inside the line, no leading/trailing white space
+vnoremap al :<C-U>normal 0v$h<CR>
+omap al :normal val<CR>
+vnoremap il :<C-U>normal ^vg_<CR>
+omap il :normal vil<CR>
 
 " =============================
 "     Commands & Functions
 " =============================
-" Run makeprg and open quicfix window
+" Run makeprg and open quickfix window
 command -nargs=* Make make! <args> | cwindow
 
 function! DeleteInactiveBuffers()
