@@ -57,21 +57,21 @@ call SilentMkdir($HOME . "/.vim/swapfiles")
 "   Shortcuts
 " ------------------------------
 " Quick save
-nmap <Leader>w :w<CR>
-nmap <Leader>wq :wq<CR>
+nnoremap <Leader>w :w<CR>
+nnoremap <Leader>wq :wq<CR>
 " Open quickfix list item in new tab
-nmap <C-t> <C-w><CR><C-w>T
+nnoremap <C-t> <C-w><CR><C-w>T
 " Move between tabs with <C-S-ARROW>
-noremap <C-S-RIGHT> gt
-noremap <C-S-LEFT> gT
+nnoremap <C-S-RIGHT> gt
+nnoremap <C-S-LEFT> gT
 
 " Define 'a line' and 'inside line' text objects
 "   al is the whole line, including all white space
 "   il is the 'text' inside the line, no leading/trailing white space
-vnoremap al :<C-U>normal 0v$h<CR>
-omap al :normal val<CR>
-vnoremap il :<C-U>normal ^vg_<CR>
-omap il :normal vil<CR>
+vnoremap <silent> al :<C-U>normal 0v$h<CR>
+omap <silent> al :normal val<CR>
+vnoremap <silent> il :<C-U>normal ^vg_<CR>
+omap <silent> il :normal vil<CR>
 
 " =============================
 "     Commands & Functions
@@ -249,11 +249,9 @@ nnoremap <Leader>T :Tags<CR>
 " ------------------------------
 "    Tabularize
 " ------------------------------
-" Align text to '=' and ':'
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a: :Tabularize /:<CR>
-vmap <Leader>a: :Tabularize /:<CR>
+" Align text to character after <Leader>a
+nnoremap <expr> <Leader>a ':Tabularize /'.nr2char(getchar()).'<CR>'
+vnoremap <expr> <Leader>a ':Tabularize /'.nr2char(getchar()).'<CR>'
 
 
 " =============================
