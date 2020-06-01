@@ -18,6 +18,9 @@ source $ZSH/oh-my-zsh.sh
 #------------------------------------------------
 source ~/.zplug/init.zsh
 
+# Let zplug manage itself
+zplug 'zplug/zplug', hook-build: 'zplug --self-manage'
+
 # Load oh-my-zsh plugins
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
