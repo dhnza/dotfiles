@@ -125,6 +125,9 @@ Plug 'tpope/vim-abolish'
 " Aligning text
 Plug 'godlygeek/tabular'
 
+" More text objects
+Plug 'wellle/targets.vim'
+
 " Syntax checker
 Plug 'vim-syntastic/syntastic'
 
