@@ -1,0 +1,48 @@
+name: CI
+
+# Trigger CI on push to any branch
+on: push
+
+jobs:
+
+  test:
+
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        include:
+          - os: ubuntu-latest
+            install: sudo apt-get update && sudo apt install -y
+          - os: macos-latest
+            install: brew install
+
+    steps:
+
+    - name: Install dependencies
+      run: ${{ matrix.install }} zsh vim git curl
+
+    - name: Build dotfiles
+      run: |
+        curl -Ls https://gist.github.com/dhnza/6b384f52ce32342761cc00f9d26311fa/raw/dotfiles-init.sh | /bin/bash
+        #TODO: add branch to script??
+        git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME checkout ${GITHUB_REF##*/}
+        $HOME/.dotfiles-install.sh
+
+    - name: Check installation
+      shell: zsh {0}
+      run: |
+        set -e
+        # Check zsh plugins
+        #TODO: work around for zplug's pipe incompatibility
+        zsh <<< "source $HOME/.zshrc; zplug check --verbose"
+        # Check cargo packages
+        command -v cargo
+        command -v fd
+        command -v rg
+        # Check vim plugins
+        vim +PlugStatus +"write temp" +qall <<< '\n' > /dev/null
+        [[ 0 == $(awk '/Finished./ {print $2}' temp) ]]
+        rm -f temp
