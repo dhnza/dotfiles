@@ -53,6 +53,8 @@ My configuration expects the following packages are installed.
     - `fd-find`
     - `ripgrep`
 
+To install (most of) these automatically, run the `.dotfiles-install.sh` script included in this repository.
+
 
 ## Sources
 

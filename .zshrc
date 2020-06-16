@@ -35,8 +35,8 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions"
 zplug "supercrabtree/k"
 
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
+# Install plugins if there are any that have not been installed
+if ! zplug check --verbose && [[ -o  interactive ]]; then
     printf "Install? [y/N]: "
     if read -q; then
         echo; zplug install
