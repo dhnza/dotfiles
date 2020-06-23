@@ -69,7 +69,7 @@ fi
 
 # rust packages
 chk_command "cargo"
-cargo install fd-find ripgrep
+cargo install fd-find ripgrep bat
 
 # vim plugins
 vim +PlugUpdate +qall <<< "\n" > /dev/null

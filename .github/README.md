@@ -52,6 +52,7 @@ My configuration expects the following packages are installed.
 - [cargo](https://www.rust-lang.org/learn/get-started) (Rust package manager)
     - `fd-find`
     - `ripgrep`
+    - `bat`
 
 To install (most of) these automatically, run the `.dotfiles-install.sh` script included in this repository.
 
