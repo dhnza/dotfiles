@@ -64,6 +64,8 @@ nnoremap <C-t> <C-w><CR><C-w>T
 " Move between tabs with <C-S-ARROW>
 nnoremap <C-S-RIGHT> gt
 nnoremap <C-S-LEFT> gT
+" Select last edited text (including paste)
+nnoremap gV `[v`]
 
 " Define 'a line' and 'inside line' text objects
 "   al is the whole line, including all white space
