@@ -1,0 +1,4 @@
+[rebase]
+       autosquash = true
+[core]
+       pager = less -RF
