@@ -130,6 +130,9 @@ Plug 'godlygeek/tabular'
 " More text objects
 Plug 'wellle/targets.vim'
 
+" Enhanced matching text navigation
+Plug 'andymass/vim-matchup'
+
 " Syntax checker
 Plug 'vim-syntastic/syntastic'
 
