@@ -39,6 +39,12 @@ associate (${1:name} => ${2:refer_to})
 end associate
 endsnippet
 
+snippet block "block construct" b
+block
+	${0:${VISUAL}}
+end block
+endsnippet
+
 
 ################
 # Control flow #
@@ -59,13 +65,13 @@ endsnippet
 
 snippet do "do loop" b
 do ${1:i} = ${2:1}, ${3:n}
-	$0
+	${0:${VISUAL}}
 end do
 endsnippet
 
 snippet dow "do while loop" b
 do while (${1:condition})
-	$0
+	${0:${VISUAL}}
 end do
 endsnippet
 
