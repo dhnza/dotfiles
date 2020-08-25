@@ -198,6 +198,12 @@ let g:lightline = {
       \ }
 
 " ------------------------------
+"    GitGutter
+" ------------------------------
+" Update sign column every quarter second
+set updatetime=250
+
+" ------------------------------
 "    Syntastic
 " ------------------------------
 set statusline+=%#warningmsg#
