@@ -215,6 +215,13 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 0
 
+" Make location list fit content, 10 lines maximum.
+function! SyntasticCheckHook(errors)
+    if !empty(a:errors)
+        let g:syntastic_loc_list_height = min([len(a:errors), 10])
+    endif
+endfunction
+
 " Disable python syntax checking
 let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 
