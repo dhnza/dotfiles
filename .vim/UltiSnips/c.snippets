@@ -1,0 +1,96 @@
+# Sources:
+#   https://github.com/honza/vim-snippets/blob/master/UltiSnips/c.snippets
+
+##############
+# Constructs #
+##############
+snippet once "Include header once guard" b
+#ifndef ${1:`!p
+if not snip.c:
+	import string
+	snip.rv = re.sub(r'[^A-Za-z0-9]+','_', snip.fn).upper()
+else:
+	snip.rv = snip.c`}
+#define $1
+
+${0:${VISUAL}}
+
+#endif /* $1 */
+endsnippet
+
+snippet main "main()" b
+int main(int argc, char *argv[]) {
+	${0:${VISUAL}}
+	return 0;
+}
+endsnippet
+
+snippet fun "function" b
+${1:void} ${2:function_name}($3) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet fund "function declaration" b
+${1:void} ${2:function_name}($3);
+endsnippet
+
+snippet st "struct" b
+struct ${1:`!p snip.rv = (snip.basename or "name") + "_t"`} {
+	${0:/* data */}
+};
+endsnippet
+
+snippet enum "Enumeration" b
+enum ${1:name} { $0 };
+endsnippet
+
+
+################
+# Control flow #
+################
+snippet for "for loop" b
+for (${1:int i} = 0; ${1/(int|size_t) //} < ${2:size}; ${3:++${1/(int|size_t) //}}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet if "if statement" b
+if (${1:condition}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet ife "if..else" b
+if (${1:condition}) {
+	${2:${VISUAL}}
+} else {
+	$0
+}
+endsnippet
+
+snippet switch "Switch statement" b
+switch (${1:expression}) {
+	case ${2:constant}:
+		$3
+		break;${4/(.*)/(?1:\\n)/}
+	${4:default:}${4/(.*)/(?1:\\n		)/}$0
+}
+endsnippet
+
+
+############
+#   Misc   #
+############
+snippet inc "#include <...>" b
+#include <${1:lib.h}>
+endsnippet
+
+snippet printf "printf"
+printf("${1:%s}\n"${1/([^%]|%%)*(%.)?.*/(?2:, :\);)/}$2${1/([^%]|%%)*(%.)?.*/(?2:\);)/}
+endsnippet
+
+snippet fprintf "fprintf"
+fprintf(${1:stderr}, "${2:%s}\n"${2/([^%]|%%)*(%.)?.*/(?2:, :\);)/}$3${2/([^%]|%%)*(%.)?.*/(?2:\);)/}
+endsnippet
+

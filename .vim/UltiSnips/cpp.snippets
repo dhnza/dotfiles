@@ -1,0 +1,37 @@
+# Sources:
+#   https://github.com/honza/vim-snippets/blob/master/UltiSnips/cpp.snippets
+
+extends c
+
+##############
+# Constructs #
+##############
+snippet class "class .. " b
+class ${1:`!p snip.rv = snip.basename or "name"`}
+{
+public:
+	${1/(\w+).*/$1/} (${2:arguments});
+	virtual ~${1/(\w+).*/$1/} ();
+
+private:
+	${0:/* data */}
+};
+endsnippet
+
+
+################
+# Control flow #
+################
+snippet fore "for each loop" b
+for (auto ${1:x} : ${2:list}) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+
+############
+#   Misc   #
+############
+snippet tp "template <typename ..>"
+template <typename ${1:T}>
+endsnippet
