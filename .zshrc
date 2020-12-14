@@ -84,6 +84,12 @@ export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git"
 
+# Syntax hihglighting in preview window
+export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always {}'"
+
+# Show directory contents with 'tree'
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+
 # Use fd for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
 _fzf_compgen_path() {
