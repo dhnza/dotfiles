@@ -25,6 +25,7 @@ set expandtab
 
 " Indentation
 set shiftwidth=4
+set shiftround
 set autoindent
 
 " Open new split panes to right and bottom
