@@ -5,18 +5,31 @@
 ##############
 # Constructs #
 ##############
+snippet prog "program" b
+program ${1:name}
+
+	${2:! use statements}
+	implicit none
+
+	${3:! type/procedure declarations}
+
+	${0:! program}
+
+end program $1
+endsnippet
+
 snippet mod "module" b
 module ${1:name}
 
-	$2! use statements
+	${2:! use statements}
 	implicit none
 	private
 
-	$3! type/procedure declarations
+	${3:! type/procedure declarations}
 
 contains
 
-	$0! procedure definitions
+	${0:! procedure definitions}
 
 end module $1
 endsnippet
@@ -127,7 +140,7 @@ contains
 end type $2
 endsnippet
 
-snippet pr "print '(...)'"
+snippet print "print '(...)'"
 print '(${1:i4})'${1/(^".*"$)?.*/(?1::, )/}$2
 endsnippet
 
