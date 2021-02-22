@@ -23,6 +23,8 @@ chk_command "vim"
 chk_command "awk"
 chk_command "git"
 chk_command "curl"
+chk_command "zsh"
+chk_command "ctags"
 
 # Check dotfiles exist
 if ! [[ -d "$HOME/.dotfiles" ]]; then

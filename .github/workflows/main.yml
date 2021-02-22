@@ -15,14 +15,19 @@ jobs:
         os: [ubuntu-latest, macos-latest]
         include:
           - os: ubuntu-latest
-            install: sudo apt-get update && sudo apt install -y
+            install: |
+                sudo apt-get update
+                sudo apt install -y zsh vim git curl universal-ctags
           - os: macos-latest
-            install: brew install
+            install: |
+                brew install zsh vim git curl
+                #TODO: remove when universal-ctags is added to the official homebrew repo
+                brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 
     steps:
 
     - name: Install dependencies
-      run: ${{ matrix.install }} zsh vim git curl
+      run: ${{ matrix.install }}
 
     - name: Build dotfiles
       run: |
