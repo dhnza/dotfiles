@@ -1,7 +1,13 @@
 name: CI
 
-# Trigger CI on push to any branch
-on: push
+on:
+
+  # Trigger on push to any branch
+  push:
+
+  # Trigger twice a month at 6:00 a.m.
+  schedule:
+    - cron:  '0 6 */14 * *'
 
 jobs:
 
