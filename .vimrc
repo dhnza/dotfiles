@@ -48,6 +48,9 @@ set undofile "Maintain undo history between sessions
 set undodir=~/.vim/undodir
 call SilentMkdir($HOME . "/.vim/undodir")
 
+" Load MAN plugin
+runtime ftplugin/man.vim
+
 " Write swap and backup files in different directory
 set backupdir=~/.vim/backupdir//,/tmp//
 set directory=~/.vim/swapfiles//,/tmp//
