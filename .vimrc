@@ -137,6 +137,9 @@ Plug 'wellle/targets.vim'
 " Enhanced matching text navigation
 Plug 'andymass/vim-matchup'
 
+" Live previews for substitute commands
+Plug 'markonm/traces.vim'
+
 " Syntax checker
 Plug 'vim-syntastic/syntastic'
 
@@ -246,6 +249,12 @@ let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 
 " Open snippet editor in split window
 let g:UltiSnipsEditSplit = 'context'
+
+" ------------------------------
+"    Vim-Traces
+" ------------------------------
+" Support for Vim-Abolish commands
+let g:traces_abolish_integration = 1
 
 " ------------------------------
 "    Vim-Markdown
