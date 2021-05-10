@@ -7,6 +7,24 @@ function! SilentMkdir(path)
     endif
 endfunction
 
+function! BufWidth()
+    let width = winwidth(0)
+    let numberwidth = max([&numberwidth, strlen(line('$'))+1])
+    let numwidth = (&number || &relativenumber)? numberwidth : 0
+    let foldwidth = &foldcolumn
+
+    if &signcolumn == 'yes'
+        let signwidth = 2
+    elseif &signcolumn == 'auto'
+        let signs = execute(printf('sign place buffer=%d', bufnr('')))
+        let signs = split(signs, "\n")
+        let signwidth = len(signs)>2? 2: 0
+    else
+        let signwidth = 0
+    endif
+    return width - numwidth - foldwidth - signwidth
+endfunction
+
 " =============================
 "         Vim Settings
 " =============================
@@ -225,7 +243,17 @@ let g:syntastic_check_on_wq = 0
 " Make location list fit content, 10 lines maximum.
 function! SyntasticCheckHook(errors)
     if !empty(a:errors)
-        let g:syntastic_loc_list_height = min([len(a:errors), 10])
+        " Compute total lines occupied by errors
+        let l:nline = 0
+        let l:width = BufWidth()+1
+        for l:err in a:errors
+            let l:str = printf("%s|%d col %d error|  %s",
+                             \ expand("#".l:err['bufnr']),
+                             \ l:err['lnum'], l:err['col'],
+                             \ trim(l:err['text']))
+            let l:nline += (strwidth(l:str)+l:width-1)/l:width
+        endfor
+        let g:syntastic_loc_list_height = min([l:nline, 10])
     endif
 endfunction
 
