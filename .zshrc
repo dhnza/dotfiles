@@ -133,8 +133,12 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias ll='ls --color=auto -lhF'
 alias bcl='bc -l'
 alias grin='grep -rin'
+alias batp='bat -p'
 alias g-='git log --graph --color --oneline --decorate'
 alias gdo='git diff origin/$(git rev-parse --abbrev-ref HEAD)'
+
+alias squeuel="squeue -o '%.18i %.9P %.8j %.8u %.8T %.10M %.10l %.10L %.20S %.20e %.5D %R'"
+alias sqnext='squeuel -u $USER | (IFS=""; read -r line; echo "$line"; sort -k 10)'
 
 #==============================================================================
 #  Custom .zshrc
