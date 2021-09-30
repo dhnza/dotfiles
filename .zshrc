@@ -82,7 +82,7 @@ export GROFF_NO_SGR=1
 # Use fd for file and directory search
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type d --hidden --follow --exclude .git"
+export FZF_ALT_C_COMMAND="fd --type d --follow --exclude .git"
 
 # Syntax hihglighting in preview window
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always {}'"
