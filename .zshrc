@@ -135,7 +135,9 @@ alias bcl='bc -l'
 alias grin='grep -rin'
 alias batp='bat -p'
 alias g-='git log --graph --color --oneline --decorate'
+alias g-a='git log --graph --color --oneline --decorate --all'
 alias gdo='git diff origin/$(git rev-parse --abbrev-ref HEAD)'
+alias todos='rg -p -A 2 TODO'
 
 alias squeuel="squeue -o '%.18i %.9P %.8j %.8u %.8T %.10M %.10l %.10L %.20S %.20e %.5D %R'"
 alias sqnext='squeuel -u $USER | (IFS=""; read -r line; echo "$line"; sort -k 10)'
