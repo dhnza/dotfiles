@@ -307,6 +307,8 @@ nnoremap <Leader>b :Buffers<CR>
 " Search through tags
 nnoremap <Leader>t :BTags<CR>
 nnoremap <Leader>T :Tags<CR>
+" Search through help tags
+nnoremap <Leader>h :Helptags<CR>
 
 " ------------------------------
 "    Tabularize
