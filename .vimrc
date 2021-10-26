@@ -204,6 +204,13 @@ if exists('+termguicolors')
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors
+  " Set matching onehalfdark colors for terminal windows.
+  let g:terminal_ansi_colors = [
+        \ '#282c34', '#e06c75', '#98c379', '#e5c07b',
+        \ '#61afef', '#c678dd', '#56b6c2', '#dcdfe4',
+        \ '#5c6370', '#e06c75', '#98c379', '#e5c07b',
+        \ '#61afef', '#c678dd', '#56b6c2', '#dcdfe4'
+        \ ]
 endif
 
 " ------------------------------
