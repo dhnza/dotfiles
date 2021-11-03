@@ -308,14 +308,17 @@ nnoremap <Leader>g :Rg<CR>
 nnoremap <Leader>l :BLines<CR>
 nnoremap <Leader>L :Lines<CR>
 " Search vim commands
-nnoremap <Leader>p :Commands<CR>
+nnoremap <Leader>; :Commands<CR>
 " Search open buffers
 nnoremap <Leader>b :Buffers<CR>
 " Search through tags
 nnoremap <Leader>t :BTags<CR>
 nnoremap <Leader>T :Tags<CR>
 " Search through help tags
-nnoremap <Leader>h :Helptags<CR>
+nnoremap <Leader>H :Helptags<CR>
+
+" Run highlighted command directly
+let g:fzf_commands_expect = 'alt-enter'
 
 " ------------------------------
 "    Tabularize
