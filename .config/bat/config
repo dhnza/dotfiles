@@ -8,3 +8,4 @@
 
 # Syntax mappings: map a certain filename pattern to a language.
 --map-syntax "*.tpp:C++"
+--map-syntax "*.xtx:LaTeX"

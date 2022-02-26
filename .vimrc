@@ -330,11 +330,6 @@ vnoremap <expr> <Leader>a ':Tabularize /'.nr2char(getchar()).'<CR>'
 " Highlight misspelled spelled words in red
 hi SpellBad cterm=underline ctermfg=red
 
-" Set the filetype based on the file's extension, but only if
-" 'filetype' has not already been set
-au BufRead,BufNewFile *.tpp set filetype=cpp
-au BufRead,BufNewFile *.sbatch set filetype=sh
-
 " Use git commit highlighting for dotfiles commits
 au BufRead,BufNewFile COMMIT_EDITMSG set filetype=gitcommit
 
