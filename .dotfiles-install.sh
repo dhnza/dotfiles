@@ -2,6 +2,8 @@
 
 # A script to automatically download packages required by my dotfiles.
 
+set -x
+
 function command_exists {
     command -v "$@" > /dev/null
 }
@@ -74,4 +76,5 @@ chk_command "cargo"
 cargo install fd-find ripgrep bat
 
 # vim plugins
-vim +PlugUpdate +qall <<< "\n" > /dev/null
+vim +PlugUpdate +'w! /tmp/vim-plug.log' +qall <<< "\n" > /dev/null
+cat /tmp/vim-plug.log

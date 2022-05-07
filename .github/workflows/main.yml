@@ -56,6 +56,6 @@ jobs:
         command -v rg
         command -v bat
         # Check vim plugins
-        vim +PlugStatus +"write temp" +qall <<< '\n' > /dev/null
-        [[ 0 == $(awk '/Finished./ {print $2}' temp) ]]
-        rm -f temp
+        vim +PlugStatus +'w! /tmp/vim-plug.log' +qall <<< '\n' > /dev/null
+        cat /tmp/vim-plug.log
+        [[ 0 == $(awk '/Finished./ {print $2}' /tmp/vim-plug.log) ]]
