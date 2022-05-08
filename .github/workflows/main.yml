@@ -26,10 +26,10 @@ jobs:
           - os: ubuntu-latest
             install: |
                 sudo apt-get update
-                sudo apt install -y zsh vim git curl universal-ctags
+                sudo apt install -y zsh vim git curl universal-ctags mupdf
           - os: macos-latest
             install: |
-                brew install zsh vim curl universal-ctags
+                brew install zsh vim curl universal-ctags mupdf
 
     steps:
 

@@ -174,6 +174,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" Latex integration
+Plug 'lervag/vimtex'
+
 " Markdown integration
 Plug 'plasticboy/vim-markdown'
 
@@ -286,6 +289,12 @@ let g:UltiSnipsEditSplit = 'context'
 " ------------------------------
 " Support for Vim-Abolish commands
 let g:traces_abolish_integration = 1
+
+" ------------------------------
+"    VimTeX
+" ------------------------------
+" Set PDF viewer
+let g:vimtex_view_method = 'mupdf'
 
 " ------------------------------
 "    Vim-Markdown
