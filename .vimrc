@@ -53,6 +53,10 @@ set splitright
 " Tab completion in status bar
 set wildmenu
 
+" Disable page scrolling keybindings
+noremap <S-Up> <Up>
+noremap <S-Down> <Down>
+
 " Use <Space> as leader key
 let mapleader="\<Space>"
 noremap <Space> <Nop>
@@ -102,6 +106,10 @@ omap <silent> il :normal vil<CR>
 " =============================
 " Run makeprg and open quickfix window
 command -nargs=* Make make! <args> | cwindow
+
+" Open split with some Latex character sequences translated to UTF-8 glyphs
+command TexPreview setlocal scrollbind | vsplit
+    \ | setlocal conceallevel=2 | wincmd h
 
 function! DeleteInactiveBuffers()
     let tpbl=[]
