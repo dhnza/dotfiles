@@ -158,6 +158,9 @@ Plug 'andymass/vim-matchup'
 " Live previews for substitute commands
 Plug 'markonm/traces.vim'
 
+" Highlight exact differences in diffs
+Plug 'rickhowe/diffchar.vim'
+
 " Syntax checker
 Plug 'vim-syntastic/syntastic'
 
