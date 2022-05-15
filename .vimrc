@@ -307,6 +307,16 @@ let g:traces_abolish_integration = 1
 " Set PDF viewer
 let g:vimtex_view_method = 'mupdf'
 
+" Disable searching included files for text completion
+let g:vimtex_include_search_enabled = 0
+
+" Enable VimTex completion features for VimCompletesMe
+augroup VimCompletesMeTex
+    autocmd!
+    autocmd FileType tex
+        \ let b:vcm_omni_pattern = g:vimtex#re#neocomplete
+augroup END
+
 " ------------------------------
 "    Vim-Markdown
 " ------------------------------
