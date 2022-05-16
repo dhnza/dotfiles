@@ -11,7 +11,7 @@ ZSH_THEME="agnoster"
 source $ZSH/oh-my-zsh.sh
 
 #==============================================================================
-#  Plugins 
+#  Plugins
 #==============================================================================
 #------------------------------------------------
 #    ZPLUG
@@ -40,7 +40,7 @@ if ! zplug check --verbose && [[ -o  interactive ]]; then
     printf "Install? [y/N]: "
     if read -q; then
         echo; zplug install
-    fi  
+    fi
 fi
 
 # Then, source plugins and add commands to $PATH
@@ -71,11 +71,10 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time)
 #------------------------------------------------
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=245'
 # For coloring man pages
-export GROFF_NO_SGR=1 
-
+export GROFF_NO_SGR=1
 
 #==============================================================================
-#  FZF 
+#  FZF
 #==============================================================================
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -104,7 +103,7 @@ _fzf_compgen_dir() {
 #==============================================================================
 #  Functions
 #==============================================================================
-## fgst - pick files from `git status -s` 
+## fgst - pick files from `git status -s`
 ## Source: https://github.com/junegunn/fzf/wiki/Examples
 is_in_git_repo() {
     git rev-parse HEAD > /dev/null 2>&1
@@ -117,15 +116,8 @@ fgst() {
         --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS" fzf -m "$@" | awk '{print $2}'
 }
 
-# Fixes vim tab completion
-fix_vim() {
-    rm $ZSH_COMPDUMP
-    rm -f $ZPLUG_HOME/zcompdump
-    exec zsh
-}
-
 #==============================================================================
-#  Aliases 
+#  Aliases
 #==============================================================================
 # Use dotfiles command to manage the dotfiles repo
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
