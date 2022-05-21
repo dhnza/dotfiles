@@ -122,7 +122,10 @@ fgst() {
 # Use dotfiles command to manage the dotfiles repo
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-alias ll='ls --color=auto -lhF'
+alias ls='exa'
+alias ll='exa -lF --git'
+alias l='exa -lFa --git'
+
 alias bcl='bc -l'
 alias grin='grep -rin'
 alias batp='bat -p'
