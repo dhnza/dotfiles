@@ -101,6 +101,16 @@ _fzf_compgen_dir() {
 }
 
 #==============================================================================
+#  Zoxide
+#==============================================================================
+# Load zoxide zsh integration
+eval "$(zoxide init zsh)"
+
+# Use tree in fzf preview
+_ZO_FZF_PREVIEW='awk "{print \$2}" <<< {} | xargs tree -C | head -100'
+export _ZO_FZF_OPTS="--layout=reverse --height=40% --preview '$_ZO_FZF_PREVIEW'"
+
+#==============================================================================
 #  Functions
 #==============================================================================
 ## fgst - pick files from `git status -s`
