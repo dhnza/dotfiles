@@ -281,7 +281,10 @@ let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
 "    VimCompletesMe
 " ------------------------------
 " Run automatically on all file types
-autocmd FileType vim let b:vcm_tab_complete = 'vim'
+augroup VimCompletesMeSettings
+    autocmd!
+    autocmd FileType vim let b:vcm_tab_complete = 'vim'
+augroup END
 
 " ------------------------------
 "    UltiSnips
@@ -361,12 +364,18 @@ vnoremap <expr> <Leader>a ':Tabularize /'.nr2char(getchar()).'<CR>'
 hi SpellBad cterm=underline ctermfg=red
 
 " Use git commit highlighting for dotfiles commits
-au BufRead,BufNewFile COMMIT_EDITMSG set filetype=gitcommit
+augroup DotFilesCommit
+    autocmd!
+    autocmd BufRead,BufNewFile COMMIT_EDITMSG set filetype=gitcommit
+augroup END
 
 
 " =============================
 "     Per-Project Settings
 " =============================
 " Load settings from .projct_vimrc for all files in a project:
+" augroup PerProjectSettings
+"     autocmd!
 "   autocmd BufReadPre,BufNewFile /patch/to/project/* source /path/to/.project_vimrc
+" augroup END
 " BufReadPre loads settings BEFORE the file is read, so that autocmd settings work.
