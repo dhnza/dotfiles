@@ -1,4 +1,5 @@
-# dotfiles 
+# dotfiles
+[![CI](https://github.com/dhnza/dotfiles/actions/workflows/main.yml/badge.svg)](https://github.com/dhnza/dotfiles/actions/workflows/main.yml)
 
 
 ## Installation
@@ -37,7 +38,7 @@ mkdir -p ~/.dotfiles-backup && dotfiles checkout 2>&1 | egrep '\s+\.' | xargs -i
 
 Checkout your dotfiles to your `$HOME`:
 ```sh
-dotfiles checkout 
+dotfiles checkout
 ```
 
 
