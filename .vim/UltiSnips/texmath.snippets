@@ -1,8 +1,11 @@
 # Source: https://github.com/honza/vim-snippets/blob/master/UltiSnips/texmath.snippets
 
-##############
-# MATH STUFF #
-##############
+################################################################################
+# Math
+################################################################################
+snippet lp "Long parenthesis"
+\left(${1:${VISUAL:contents}}\right)$0
+endsnippet
 
 snippet "\\?frac" "Fraction" r
 \frac{$1}{$2}
@@ -44,7 +47,7 @@ snippet eqann "Equation array without a number" b
 \end{eqnarray*}
 endsnippet
 
-snippet cases "Cases" b
+snippet cases "Cases" w
 \begin{cases}
 	${1:expression} & \text{if } ${2:condition} \\\\
 \end{cases}
@@ -52,15 +55,14 @@ endsnippet
 
 snippet matrix "Matrix" w
 \begin{bmatrix}
-	$1a & b \\\\
-	c & d \\\\
+	${1:a} & ${2:b} \\\\
+	${3:c} & ${4:d} \\\\
 \end{bmatrix}
 endsnippet
 
-#################
-# PHYSICS STUFF #
-#################
-
+################################################################################
+# Physics
+################################################################################
 snippet dv "Derivative" w
 \dv[${1:${VISUAL}}]{${2}}{${3}}
 endsnippet
