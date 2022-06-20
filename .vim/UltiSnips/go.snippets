@@ -1,9 +1,9 @@
 # Sources:
 #   https://github.com/honza/vim-snippets/blob/master/UltiSnips/go.snippets
 
-##############
-# Constructs #
-##############
+################################################################################
+# Constructs
+################################################################################
 snippet struct "struct declaration" b
 type ${1:Struct} struct {
 	${0:${VISUAL}}
@@ -34,10 +34,9 @@ func ${1:name}(${2:params})${3/(.+)/ /}${3:type} {
 }
 endsnippet
 
-
-################
-# Control flow #
-################
+################################################################################
+# Control flow
+################################################################################
 snippet if "if statement" b
 if ${1:condition}${1/(.+)/ /}{
 	${0:${VISUAL}}
@@ -78,9 +77,9 @@ for ${1:_}, ${2:val} := range ${3:list} {
 }
 endsnippet
 
-##############
-#  Variables #
-##############
+################################################################################
+# Variables
+################################################################################
 snippet map "map type" b
 map[${1:keytype}]${2:valtype}
 endsnippet
@@ -93,10 +92,9 @@ snippet var "variable declaration" b
 var ${1:name}${2/(.+)/ /}${2:type}${3: = ${0:value}}
 endsnippet
 
-
-############
-#   Misc   #
-############
+################################################################################
+# Misc
+################################################################################
 snippet /^import/ "import declaration" r
 import (
 	"${1:package}"
@@ -113,3 +111,5 @@ if err != nil {
 	${1:log.Fatal(err)}
 }
 endsnippet
+
+# vim:ft=snippets:

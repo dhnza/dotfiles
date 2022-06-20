@@ -2,9 +2,9 @@
 #   https://github.com/synzox/ultisnips-fortran/blob/master/UltiSnips/fortran.snippets
 #   https://github.com/manoute/vimrc/blob/master/UltiSnips/fortran.snippets
 
-##############
-# Constructs #
-##############
+################################################################################
+# Constructs
+################################################################################
 snippet prog "program" b
 program ${1:name}
 
@@ -58,10 +58,9 @@ block
 end block
 endsnippet
 
-
-################
-# Control flow #
-################
+################################################################################
+# Control flow
+################################################################################
 snippet if "if" b
 if (${1:condition}) then
 	${0:${VISUAL}}
@@ -88,10 +87,9 @@ do while (${1:condition})
 end do
 endsnippet
 
-
-#############
-# Variables #
-#############
+################################################################################
+# Variables
+################################################################################
 snippet i "integer"
 integer :: ${1:name}
 endsnippet
@@ -124,10 +122,9 @@ snippet t
 type(${1:typename}) :: ${2:name}
 endsnippet
 
-
-############
-#   Misc   #
-############
+################################################################################
+# Misc
+################################################################################
 snippet use "use module" b
 use ${1:module}, only: ${2:symbols}
 endsnippet
