@@ -1,14 +1,55 @@
 #==============================================================================
 #  Bootstrap
 #==============================================================================
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set theme
-ZSH_THEME="agnoster"
-
 # Start oh-my-zsh
 source $ZSH/oh-my-zsh.sh
+
+#==============================================================================
+#  Functions
+#==============================================================================
+## fgst - pick files from `git status -s`
+## Source: https://github.com/junegunn/fzf/wiki/Examples
+is_in_git_repo() {
+    git rev-parse HEAD > /dev/null 2>&1
+}
+
+fgst() {
+    # "Nothing to see here, move along"
+    is_in_git_repo || return
+    git status -s | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%}\
+        --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS" fzf -m "$@" | awk '{print $2}'
+}
+
+#==============================================================================
+#  Aliases
+#==============================================================================
+# Use dotfiles command to manage the dotfiles repo
+alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+alias ls='exa'
+alias ll='exa -lF --git'
+alias l='exa -lFa --git'
+
+alias bcl='bc -l'
+alias grin='grep -rin'
+alias batp='bat -p'
+alias g-='git log --graph --color --oneline --decorate'
+alias g-a='git log --graph --color --oneline --decorate --all'
+alias gdo='git diff origin/$(git rev-parse --abbrev-ref HEAD)'
+alias todos='rg -p -A 2 TODO'
+
+alias squeuel="squeue -o '%.18i %.9P %.8j %.8u %.8T %.10M %.10l %.10L %.20S %.20e %.5D %R'"
+alias sqnext='squeuel -u $USER | (IFS=""; read -r line; echo "$line"; sort -k 10)'
 
 #==============================================================================
 #  Plugins
@@ -47,27 +88,7 @@ fi
 zplug load
 
 #------------------------------------------------
-#    Powerlevel10k
-#------------------------------------------------
-# Only show hostname in context
-POWERLEVEL9K_CONTEXT_TEMPLATE="@%m"
-
-# Shorten prompt paths
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_DELIMITER=""
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-
-# Customize git repository segment
-POWERLEVEL9K_VCS_GIT_HOOKS=(vcs-detect-changes git-untracked git-aheadbehind git-remotebranch git-tagname)
-
-# Customize left promopt
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(anaconda context dir vcs)
-
-# Customize right promopt
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time)
-
-#------------------------------------------------
-#    Other Plugin Configuration
+#    Plugin Configuration
 #------------------------------------------------
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=245'
 # For coloring man pages
@@ -111,41 +132,18 @@ _ZO_FZF_PREVIEW='awk "{print \$2}" <<< {} | xargs tree -C | head -100'
 export _ZO_FZF_OPTS="--layout=reverse --height=40% --preview '$_ZO_FZF_PREVIEW'"
 
 #==============================================================================
-#  Functions
+#  Powerlevel10k
 #==============================================================================
-## fgst - pick files from `git status -s`
-## Source: https://github.com/junegunn/fzf/wiki/Examples
-is_in_git_repo() {
-    git rev-parse HEAD > /dev/null 2>&1
-}
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-fgst() {
-    # "Nothing to see here, move along"
-    is_in_git_repo || return
-    git status -s | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%}\
-        --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS" fzf -m "$@" | awk '{print $2}'
-}
+# Shorten prompt paths
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_DELIMITER=""
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 
-#==============================================================================
-#  Aliases
-#==============================================================================
-# Use dotfiles command to manage the dotfiles repo
-alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
-
-alias ls='exa'
-alias ll='exa -lF --git'
-alias l='exa -lFa --git'
-
-alias bcl='bc -l'
-alias grin='grep -rin'
-alias batp='bat -p'
-alias g-='git log --graph --color --oneline --decorate'
-alias g-a='git log --graph --color --oneline --decorate --all'
-alias gdo='git diff origin/$(git rev-parse --abbrev-ref HEAD)'
-alias todos='rg -p -A 2 TODO'
-
-alias squeuel="squeue -o '%.18i %.9P %.8j %.8u %.8T %.10M %.10l %.10L %.20S %.20e %.5D %R'"
-alias sqnext='squeuel -u $USER | (IFS=""; read -r line; echo "$line"; sort -k 10)'
+# Customize left promopt
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
 
 #==============================================================================
 #  Custom .zshrc

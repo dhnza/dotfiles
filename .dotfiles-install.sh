@@ -78,3 +78,24 @@ cargo install fd-find ripgrep bat git-delta exa zoxide
 # vim plugins
 vim +PlugUpdate +'w! /tmp/vim-plug.log' +qall <<< "\n" > /dev/null
 cat /tmp/vim-plug.log
+
+
+################################################################################
+#  Download Powerlevel10k fonts
+################################################################################
+FONTS_DIR=$HOME/.local/share/fonts
+FONTS_URL=https://github.com/romkatv/powerlevel10k-media/raw/master
+
+# Downloads and install a font with the given name from the given URL
+function add_font {
+    eval $CURL --output "'$FONTS_DIR/$1'" $2
+    chmod 644 "$FONTS_DIR/$1"
+}
+
+mkdir -p $FONTS_DIR
+chmod 755 $FONTS_DIR
+
+add_font "MesloLGS NF Regular.ttf" $FONTS_URL/MesloLGS%20NF%20Regular.ttf
+add_font "MesloLGS NF Bold.ttf" $FONTS_URL/MesloLGS%20NF%20Bold.ttf
+add_font "MesloLGS NF Italic.ttf" $FONTS_URL/MesloLGS%20NF%20Italic.ttf
+add_font "MesloLGS NF Bold Italic.ttf" $FONTS_URL/MesloLGS%20NF%20Bold%20Italic.ttf
