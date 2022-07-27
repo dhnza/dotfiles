@@ -60,6 +60,7 @@ jobs:
         command -v delta
         command -v exa
         command -v zoxide
+        command -v navi
         # Check vim plugins
         vim +PlugStatus +'w! /tmp/vim-plug.log' +qall <<< '\n' > /dev/null
         cat /tmp/vim-plug.log

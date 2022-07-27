@@ -1,0 +1,4 @@
+% cargo, common
+
+# Update all crates
+cargo install-update --all

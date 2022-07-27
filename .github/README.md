@@ -57,6 +57,7 @@ My configuration expects the following packages are installed.
     - `git-delta`
     - `exa`
     - `zoxide`
+    - `navi`
 - [universal-ctags](https://github.com/universal-ctags/ctags)
 
 To install (most of) these automatically, run the `.dotfiles-install.sh` script included in this repository.

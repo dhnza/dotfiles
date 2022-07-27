@@ -1,0 +1,4 @@
+% dotfiles
+
+# Save non-committed changes to dotfiles
+dotfiles stash save $(date +'%Y_%m_%d') && dotfiles stash apply

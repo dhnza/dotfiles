@@ -1,0 +1,9 @@
+% pdf, linux
+
+# Extract all images from a PDF file
+pdfimages -p -all <pdf_file> <output_prefix>
+
+# Compress PDF file
+ps2pdf <pdf_file> <output_file>
+
+$ pdf_file: fd -e pdf -X printf "%q\n"

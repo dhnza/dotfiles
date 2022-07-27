@@ -1,0 +1,4 @@
+finder:
+  command: fzf
+  overrides: --height 30%
+  overrides_var: --height 30%

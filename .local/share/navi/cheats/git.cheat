@@ -1,0 +1,43 @@
+;-------------------------------------------------------------------------------
+; base
+;-------------------------------------------------------------------------------
+% git, common
+
+# Print commit history of a file
+git log --full-history -- <files>
+
+$ files:  fd --hidden --exclude .git
+
+# Stage all changed tracked files
+git status -s | awk '/^\s*[MUD]/ {print $0}' | sed 's/\s*[MUD]\s*//' | xargs git add
+
+;-------------------------------------------------------------------------------
+; tag
+;-------------------------------------------------------------------------------
+% git-tag, common
+
+# Push annotated and reachable tags
+git push --follow-tags
+
+# List all tags with their annotations
+git tag -n
+
+;-------------------------------------------------------------------------------
+; diff
+;-------------------------------------------------------------------------------
+% git-diff, common
+
+# Show changes of stash entry
+git diff <stash_entry>^!
+
+$ stash_entry: git stash list --- --column 1 --delimiter ':\s+'
+
+;-------------------------------------------------------------------------------
+; push
+;-------------------------------------------------------------------------------
+% git-push, common
+
+# Delete remote branch
+git push origin --delete <branch>
+
+$ branch: git branch -l | sed 's/^\*\?\s\+//'
