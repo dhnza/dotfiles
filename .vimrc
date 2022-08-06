@@ -169,8 +169,8 @@ Plug 'markonm/traces.vim'
 " Highlight exact differences in diffs
 Plug 'rickhowe/diffchar.vim'
 
-" Syntax checker
-Plug 'vim-syntastic/syntastic'
+" Linting engine
+Plug 'dense-analysis/ale'
 
 " Fugitive plug-in for git
 Plug 'tpope/vim-fugitive'
@@ -250,32 +250,36 @@ let g:lightline = {
 set updatetime=250
 
 " ------------------------------
-"    Syntastic
+"    ALE
 " ------------------------------
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+" Automatically open/close location list on error
+let g:ale_open_list = 1
 
-" Make location list fit content, 10 lines maximum.
-function! SyntasticCheckHook(errors)
-    if !empty(a:errors)
-        " Compute total lines occupied by errors
-        let l:nline = 0
-        let l:width = BufWidth()+1
-        for l:err in a:errors
-            let l:str = printf("%s|%d col %d error|  %s",
-                             \ expand("#".l:err['bufnr']),
-                             \ l:err['lnum'], l:err['col'],
-                             \ trim(l:err['text']))
-            let l:nline += (strwidth(l:str)+l:width-1)/l:width
-        endfor
-        let g:syntastic_loc_list_height = min([l:nline, 10])
-    endif
-endfunction
+" Show 5 lines of errors
+let g:ale_list_window_size = 5
 
-" Disable python syntax checking
-let g:syntastic_mode_map = { 'passive_filetypes': ['python'] }
+" Use floating windows for hover message
+let g:ale_hover_to_floating_preview = 1
+
+" Pretty border for floating windows
+let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰', '│', '─']
+
+" Use ALE for omnicompletion.
+set omnifunc=ale#completion#OmniFunc
+augroup ClosePreviewAfterComplete
+    autocmd!
+    " Close preview when completion items are added.
+    autocmd User ALECompletePost pclose
+augroup END
+
+" ALE mappings
+nnoremap <Leader>ah :ALEHover<CR>
+nnoremap <Leader>agd :ALEGoToDefinition<CR>
+nnoremap <Leader>agt :ALEGoToTypeDefinition<CR>
+nnoremap <Leader>agi :ALEGoToImplementation<CR>
+nnoremap <Leader>afr :ALEFindReferences<CR>
+nnoremap <Leader>ars :ALERepeatSelection<CR>
+nnoremap <Leader>aF :ALEFix<CR>
 
 " ------------------------------
 "    VimCompletesMe
@@ -353,8 +357,8 @@ let g:fzf_commands_expect = 'alt-enter'
 "    Tabularize
 " ------------------------------
 " Align text to character after <Leader>a
-nnoremap <expr> <Leader>a ':Tabularize /'.nr2char(getchar()).'<CR>'
-vnoremap <expr> <Leader>a ':Tabularize /'.nr2char(getchar()).'<CR>'
+nnoremap <expr> <Leader>x ':Tabularize /'.nr2char(getchar()).'<CR>'
+vnoremap <expr> <Leader>x ':Tabularize /'.nr2char(getchar()).'<CR>'
 
 
 " =============================
