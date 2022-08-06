@@ -274,12 +274,14 @@ augroup END
 
 " ALE mappings
 nnoremap <Leader>ah :ALEHover<CR>
+nnoremap <Leader>ad :ALEDetail<CR>
 nnoremap <Leader>agd :ALEGoToDefinition<CR>
 nnoremap <Leader>agt :ALEGoToTypeDefinition<CR>
 nnoremap <Leader>agi :ALEGoToImplementation<CR>
-nnoremap <Leader>afr :ALEFindReferences<CR>
-nnoremap <Leader>ars :ALERepeatSelection<CR>
-nnoremap <Leader>aF :ALEFix<CR>
+nnoremap <Leader>af :ALEFix<CR>
+nnoremap <Leader>ar :ALERename<CR>
+nnoremap <Leader>aFR :ALEFindReferences<CR>
+nnoremap <Leader>aRS :ALERepeatSelection<CR>
 
 " ------------------------------
 "    VimCompletesMe
@@ -349,6 +351,9 @@ nnoremap <Leader>t :BTags<CR>
 nnoremap <Leader>T :Tags<CR>
 " Search through help tags
 nnoremap <Leader>H :Helptags<CR>
+" Search through snippets
+nnoremap <Leader>s :Snippets<CR>
+inoremap <C-s> <C-o>:Snippets<CR>
 
 " Run highlighted command directly
 let g:fzf_commands_expect = 'alt-enter'
