@@ -6,10 +6,18 @@
 # Print commit history of a file
 git log --full-history -- <files>
 
-$ files:  fd --hidden --exclude .git
+$ files: git ls-files
 
 # Stage all changed tracked files
-git status -s | awk '/^\s*[MUD]/ {print $0}' | sed 's/\s*[MUD]\s*//' | xargs git add
+git ls-files -m | xargs git add
+
+# Ignore any changes to files
+git update-index --skip-worktree <modified-files>
+
+$ modified-files: git ls-files -m
+
+# Stop ignoring changes to files
+git update-index --no-skip-worktree <files>
 
 ;-------------------------------------------------------------------------------
 ; tag

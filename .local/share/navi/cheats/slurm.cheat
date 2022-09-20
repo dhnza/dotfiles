@@ -1,0 +1,18 @@
+;-------------------------------------------------------------------------------
+; scancel
+;-------------------------------------------------------------------------------
+% scancel, common
+
+# Cancel all jobs for current user
+scancel -i --user $USER
+
+;-------------------------------------------------------------------------------
+; scontrol
+;-------------------------------------------------------------------------------
+% scontrol, common
+
+# Hold all pending jobs to prevent them from starting
+squeue -h --user $USER | awk '{print $1}' | xargs scontrol hold
+
+# Release all held jobs
+squeue -h --user $USER | awk '{print $1}' | xargs scontrol release
