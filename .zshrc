@@ -39,6 +39,7 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias ls='exa'
 alias ll='exa -lF --git'
 alias l='exa -lFa --git'
+alias tree='exa --tree'
 
 alias bcl='bc -l'
 alias grin='grep -rin'
