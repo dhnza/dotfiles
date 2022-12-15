@@ -372,6 +372,9 @@ vnoremap <expr> <Leader>x ':Tabularize /'.nr2char(getchar()).'<CR>'
 " Highlight misspelled spelled words in red
 hi SpellBad cterm=underline ctermfg=red
 
+" Remove highlighting of first quickfix item
+hi QuickFixLine ctermbg=none
+
 " Use git commit highlighting for dotfiles commits
 augroup DotFilesCommit
     autocmd!
