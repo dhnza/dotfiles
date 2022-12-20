@@ -53,6 +53,9 @@ set splitright
 " Tab completion in status bar
 set wildmenu
 
+" Enable all mouse modes
+set mouse=a
+
 " Disable page scrolling keybindings
 noremap <S-Up> <Up>
 noremap <S-Down> <Down>
@@ -92,6 +95,8 @@ nnoremap <C-S-RIGHT> gt
 nnoremap <C-S-LEFT> gT
 " Select last edited text (including paste)
 nnoremap gV `[v`]
+" Copy selected text to clipboard
+vnoremap <C-S-c> "+y
 
 " Define 'a line' and 'inside line' text objects
 "   al is the whole line, including all white space
