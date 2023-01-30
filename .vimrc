@@ -196,6 +196,9 @@ Plug 'lervag/vimtex'
 " Markdown integration
 Plug 'plasticboy/vim-markdown'
 
+" Markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
 " Tab completion
 Plug 'ajh17/VimCompletesMe'
 
