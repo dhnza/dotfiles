@@ -263,6 +263,9 @@ let g:ale_open_list = 1
 " Show 5 lines of errors
 let g:ale_list_window_size = 5
 
+" Use virtual text only in current line
+let g:ale_virtualtext_cursor = 1
+
 " Use floating windows for hover message
 let g:ale_hover_to_floating_preview = 1
 
