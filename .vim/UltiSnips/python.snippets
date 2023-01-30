@@ -1,0 +1,16 @@
+# Sources:
+#   https://github.com/honza/vim-snippets/blob/master/UltiSnips/python.snippets
+
+################################################################################
+# Misc
+################################################################################
+snippet #! "#!/usr/bin/env python" b
+#!/usr/bin/env python
+$0
+endsnippet
+
+snippet ps "print string"
+print(`!p snip.rv = "f" if "{" in t[1] else ""`'${1:args}')
+endsnippet
+
+# vim:ft=snippets:
