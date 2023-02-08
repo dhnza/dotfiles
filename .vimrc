@@ -7,24 +7,6 @@ function! SilentMkdir(path)
     endif
 endfunction
 
-function! BufWidth()
-    let width = winwidth(0)
-    let numberwidth = max([&numberwidth, strlen(line('$'))+1])
-    let numwidth = (&number || &relativenumber)? numberwidth : 0
-    let foldwidth = &foldcolumn
-
-    if &signcolumn == 'yes'
-        let signwidth = 2
-    elseif &signcolumn == 'auto'
-        let signs = execute(printf('sign place buffer=%d', bufnr('')))
-        let signs = split(signs, "\n")
-        let signwidth = len(signs)>2? 2: 0
-    else
-        let signwidth = 0
-    endif
-    return width - numwidth - foldwidth - signwidth
-endfunction
-
 " =============================
 "         Vim Settings
 " =============================
