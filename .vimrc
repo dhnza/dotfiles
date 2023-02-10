@@ -187,6 +187,9 @@ Plug 'rickhowe/diffchar.vim'
 " Linting engine
 Plug 'dense-analysis/ale'
 
+" GitHub copilot integration
+Plug 'github/copilot.vim'
+
 " Fugitive plug-in for git
 Plug 'tpope/vim-fugitive'
 
@@ -352,6 +355,12 @@ augroup END
 " ------------------------------
 " Disable folding
 let g:vim_markdown_folding_disabled = 1
+
+" ------------------------------
+"    GitHub Copilot
+" ------------------------------
+" Ask for completions
+nnoremap <Leader>c :Copilot<CR>
 
 " ------------------------------
 "            FZF
