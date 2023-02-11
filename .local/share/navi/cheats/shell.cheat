@@ -1,4 +1,0 @@
-% watch, linux
-
-# Monitor command, refreshing every second and display differences
-watch -d -n 1 <command>

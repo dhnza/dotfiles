@@ -1,3 +1,30 @@
+;-------------------------------------------------------------------------------
+; watch
+;-------------------------------------------------------------------------------
+% watch, linux
+
+# Monitor command, refreshing every second and display differences
+watch -d -n 1 <command>
+
+;-------------------------------------------------------------------------------
+; unzip
+;-------------------------------------------------------------------------------
+% unzip, linux
+
+# Extract ZIP file into current directory
+unzip <zip_file>
+
+# Extract ZIP file into different directory
+unzip <zip_file> -d <output_dir>
+
+# List ZIP file contents
+unzip -l <zip_file>
+
+$ zip_file: fd -e zip -X printf "%q\n"
+
+;-------------------------------------------------------------------------------
+; pdf
+;-------------------------------------------------------------------------------
 % pdf, linux
 
 # Extract all images from a PDF file
