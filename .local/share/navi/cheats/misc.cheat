@@ -30,6 +30,9 @@ $ zip_file: fd -e zip -X printf "%q\n"
 # Extract all images from a PDF file
 pdfimages -p -all <pdf_file> <output_prefix>
 
+# Extract pages from PDF file
+pdfjam <pdf_file> <page_ranges> -o <output_file>
+
 # Compress PDF file
 ps2pdf <pdf_file> <output_file>
 
