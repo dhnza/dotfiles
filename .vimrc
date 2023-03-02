@@ -213,7 +213,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " Tab completion
-Plug 'ajh17/VimCompletesMe'
+Plug 'https://git.sr.ht/~ackyshake/VimCompletesMe.vim'
 
 " Snippets
 Plug 'SirVer/ultisnips'
@@ -310,7 +310,7 @@ nnoremap <Leader>aRS :ALERepeatSelection<CR>
 " ------------------------------
 "    VimCompletesMe
 " ------------------------------
-" Run automatically on all file types
+" Custom behavior for specific filetypes
 augroup VimCompletesMeSettings
     autocmd!
     autocmd FileType vim let b:vcm_tab_complete = 'vim'
@@ -321,7 +321,7 @@ augroup END
 " ------------------------------
 " Set triggers that don't conflict with VimCompletesMe
 let g:UltiSnipsExpandTrigger = '<C-j>'
-let g:UltiSnipsListSnippets = '<C-l>'
+let g:UltiSnipsListSnippets = '<C-y>'
 let g:UltiSnipsJumpForwardTrigger = '<C-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 
@@ -361,6 +361,10 @@ let g:vim_markdown_folding_disabled = 1
 " ------------------------------
 " Ask for completions
 nnoremap <Leader>c :Copilot<CR>
+
+" Use <C-l> to accept completions
+imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
 
 " ------------------------------
 "            FZF
