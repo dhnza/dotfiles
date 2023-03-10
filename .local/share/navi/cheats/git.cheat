@@ -9,7 +9,7 @@ git log --full-history -- <files>
 $ files: git ls-files
 
 # Stage all changed tracked files
-git ls-files -m | xargs git add
+git add --update
 
 # Ignore any changes to files
 git update-index --skip-worktree <modified-files>

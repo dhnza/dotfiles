@@ -20,7 +20,7 @@ unzip <zip_file> -d <output_dir>
 # List ZIP file contents
 unzip -l <zip_file>
 
-$ zip_file: fd -e zip -X printf "%q\n"
+$ zip_file: fd -e zip -X printf "'%s'\n"
 
 ;-------------------------------------------------------------------------------
 ; pdf
@@ -36,4 +36,12 @@ pdfjam <pdf_file> <page_ranges> -o <output_file>
 # Compress PDF file
 ps2pdf <pdf_file> <output_file>
 
-$ pdf_file: fd -e pdf -X printf "%q\n"
+$ pdf_file: fd -e pdf -X printf "'%s'\n"
+
+;-------------------------------------------------------------------------------
+; update
+;-------------------------------------------------------------------------------
+% cargo, vim, common
+
+# Update local packages and plugins
+rustup update && cargo install-update --all && vim +PlugUpdate +qa
