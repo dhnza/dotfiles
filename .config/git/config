@@ -1,7 +1,7 @@
 [rebase]
-       autosquash = true
+    autosquash = true
 [core]
-       pager = less -RF
+    pager = less -RF
 
 ################################################################################
 # delta
