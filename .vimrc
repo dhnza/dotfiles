@@ -28,6 +28,9 @@ set shiftwidth=4
 set shiftround
 set autoindent
 
+" Sensible backspace behavior
+set backspace=2
+
 " Open new split panes to right and bottom
 set splitbelow
 set splitright
@@ -422,6 +425,6 @@ augroup END
 " Load settings from .projct_vimrc for all files in a project:
 " augroup PerProjectSettings
 "     autocmd!
-"   autocmd BufReadPre,BufNewFile /patch/to/project/* source /path/to/.project_vimrc
+"     autocmd BufReadPre,BufNewFile /patch/to/project/* source /path/to/.project_vimrc
 " augroup END
 " BufReadPre loads settings BEFORE the file is read, so that autocmd settings work.
