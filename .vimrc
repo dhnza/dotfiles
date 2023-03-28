@@ -91,12 +91,6 @@ omap <silent> al :normal val<CR>
 vnoremap <silent> il :<C-U>normal ^vg_<CR>
 omap <silent> il :normal vil<CR>
 
-" Scroll popup window
-nnoremap <C-j> :call ScrollPopup(3)<CR>
-nnoremap <C-k> :call ScrollPopup(-3)<CR>
-nnoremap <C-Down> :call ScrollPopup(3)<CR>
-nnoremap <C-Up> :call ScrollPopup(-3)<CR>
-
 " =============================
 "     Commands & Functions
 " =============================
@@ -113,29 +107,6 @@ function! DeleteInactiveBuffers()
     for buf in filter(range(1, bufnr('$')), 'buflisted(v:val) && index(tpbl, v:val)==-1')
         silent exec 'bd' buf
     endfor
-endfunction
-
-function! ScrollPopup(nlines)
-    let winids = popup_list()
-    if len(winids) == 0
-        return
-    endif
-
-    " Ignore hidden popups
-    let prop = popup_getpos(winids[0])
-    if prop.visible != 1
-        return
-    endif
-
-    let firstline = prop.firstline + a:nlines
-    let buf_lastline = str2nr(trim(win_execute(winids[0], "echo line('$')")))
-    if firstline < 1
-        let firstline = 1
-    elseif prop.lastline + a:nlines > buf_lastline
-        let firstline = buf_lastline + prop.firstline - prop.lastline
-    endif
-
-    call popup_setoptions(winids[0], {'firstline': firstline})
 endfunction
 
 " =============================
@@ -215,8 +186,8 @@ Plug 'plasticboy/vim-markdown'
 " Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
-" Tab completion
-Plug 'https://git.sr.ht/~ackyshake/VimCompletesMe.vim'
+" Modern IDE features
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Snippets
 Plug 'SirVer/ultisnips'
@@ -291,42 +262,74 @@ let g:ale_hover_to_floating_preview = 1
 " Pretty border for floating windows
 let g:ale_floating_window_border = ['│', '─', '╭', '╮', '╯', '╰', '│', '─']
 
-" Use ALE for omnicompletion.
-set omnifunc=ale#completion#OmniFunc
-augroup ClosePreviewAfterComplete
-    autocmd!
-    " Close preview when completion items are added.
-    autocmd User ALECompletePost pclose
-augroup END
-
 " ALE mappings
-nnoremap <Leader>ah :ALEHover<CR>
-nnoremap <Leader>ad :ALEDetail<CR>
-nnoremap <Leader>agd :ALEGoToDefinition<CR>
-nnoremap <Leader>agt :ALEGoToTypeDefinition<CR>
-nnoremap <Leader>agi :ALEGoToImplementation<CR>
 nnoremap <Leader>af :ALEFix<CR>
-nnoremap <Leader>ar :ALERename<CR>
-nnoremap <Leader>aFR :ALEFindReferences<CR>
-nnoremap <Leader>aRS :ALERepeatSelection<CR>
 
 " ------------------------------
-"    VimCompletesMe
+"    CoC
 " ------------------------------
-" Custom behavior for specific filetypes
-augroup VimCompletesMeSettings
-    autocmd!
-    autocmd FileType vim let b:vcm_tab_complete = 'vim'
-augroup END
+" Use <TAB> for trigger completion with characters ahead and navigate.
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <CR> to accept selected completion item
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" CoC mappings
+nnoremap <Leader>sr <Plug>(coc-rename)
+nnoremap <silent> <Leader>sd :call CocActionAsync('doHover')<CR>
+nnoremap <silent> <Leader>sjd :call CocAction('jumpDefinition')<CR>
+nnoremap <silent> <Leader>sji :call CocAction('jumpImplementation')<CR>
+nnoremap <silent> <Leader>sjr :call CocAction('jumpReferences')<CR>
+
+" Define function and class text objects
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Disable conflicting page scrolling shortcuts
+nnoremap <C-f> <Nop>
+nnoremap <C-b> <Nop>
+vnoremap <C-f> <Nop>
+vnoremap <C-b> <Nop>
+
+" Scroll CoC float windows/popups
+nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1, 3) : ""
+nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0, 3) : ""
+inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1, 3)\<cr>" : "\<Right>"
+inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0, 3)\<cr>" : "\<Left>"
+vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1, 3) : ""
+vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0, 3) : ""
+
+" CoC extensions
+let g:coc_global_extensions = [
+    \ 'coc-json', 
+    \ 'coc-pyright', 
+    \ 'coc-vimtex',
+    \ ]
 
 " ------------------------------
 "    UltiSnips
 " ------------------------------
-" Set triggers that don't conflict with VimCompletesMe
-let g:UltiSnipsExpandTrigger = '<C-j>'
+" Set triggers that don't conflict with CoC
+let g:UltiSnipsExpandTrigger = '<C-k>'
 let g:UltiSnipsListSnippets = '<C-y>'
-let g:UltiSnipsJumpForwardTrigger = '<C-j>'
-let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+let g:UltiSnipsJumpForwardTrigger = '<C-k>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-j>'
 
 " Open snippet editor in split window
 let g:UltiSnipsEditSplit = 'context'
@@ -345,13 +348,6 @@ let g:vimtex_view_method = 'mupdf'
 
 " Disable searching included files for text completion
 let g:vimtex_include_search_enabled = 0
-
-" Enable VimTex completion features for VimCompletesMe
-augroup VimCompletesMeTex
-    autocmd!
-    autocmd FileType tex
-        \ let b:vcm_omni_pattern = g:vimtex#re#neocomplete
-augroup END
 
 " ------------------------------
 "    Vim-Markdown
@@ -389,8 +385,8 @@ nnoremap <Leader>T :Tags<CR>
 " Search through help tags
 nnoremap <Leader>H :Helptags<CR>
 " Search through snippets
-nnoremap <Leader>s :Snippets<CR>
-inoremap <C-s> <C-o>:Snippets<CR>
+nnoremap <Leader>z :Snippets<CR>
+inoremap <C-z> <C-o>:Snippets<CR>
 
 " Run highlighted command directly
 let g:fzf_commands_expect = 'alt-enter'
