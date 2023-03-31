@@ -180,6 +180,9 @@ Plug 'junegunn/fzf.vim'
 " Latex integration
 Plug 'lervag/vimtex'
 
+" Jupyter notebook integration
+Plug 'untitled-ai/jupyter_ascending.vim'
+
 " Markdown integration
 Plug 'plasticboy/vim-markdown'
 
@@ -348,6 +351,15 @@ let g:vimtex_view_method = 'mupdf'
 
 " Disable searching included files for text completion
 let g:vimtex_include_search_enabled = 0
+
+" ------------------------------
+"   Jupyter-Ascending
+" ------------------------------
+" Add sync mapping
+nnoremap <Space><Space>s :call jupyter_ascending#sync()<CR>
+
+" Disable automatic syncing
+let g:jupyter_ascending_auto_write = v:false
 
 " ------------------------------
 "    Vim-Markdown
