@@ -1,0 +1,12 @@
+% byobu, common
+
+# Start a new named session
+byobu new -s <new-session-name>
+
+# Attach to an active session
+byobu attach-session -t <session-name>
+
+$ session-name: byobu ls --- --column 1 --delimiter ':\s+'
+
+# Kill an active session
+byobu kill-session -t <session-name>
