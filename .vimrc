@@ -293,6 +293,9 @@ nnoremap <silent> <Leader>sd :call CocActionAsync('doHover')<CR>
 nnoremap <silent> <Leader>sjd :call CocAction('jumpDefinition')<CR>
 nnoremap <silent> <Leader>sji :call CocAction('jumpImplementation')<CR>
 nnoremap <silent> <Leader>sjr :call CocAction('jumpReferences')<CR>
+nnoremap <silent> <Leader>sa <Plug>(coc-codeaction-line)
+xnoremap <silent> <Leader>sa <Plug>(coc-codeaction-selected)
+nnoremap <silent> <Leader>sA <Plug>(coc-codeaction)
 
 " Define function and class text objects
 xmap if <Plug>(coc-funcobj-i)
