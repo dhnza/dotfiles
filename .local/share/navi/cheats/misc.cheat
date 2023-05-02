@@ -44,4 +44,4 @@ $ pdf_file: fd -e pdf -X printf "'%s'\n"
 % cargo, vim, common
 
 # Update local packages and plugins
-rustup update && cargo install-update --all && vim +PlugUpdate +qa
+rustup update && cargo install-update --all && vim +PlugUpdate +CocUpdateSync +qa

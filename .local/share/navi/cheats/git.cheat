@@ -49,3 +49,28 @@ $ stash_entry: git stash list --- --column 1 --delimiter ':\s+'
 git push origin --delete <branch>
 
 $ branch: git branch -l | sed 's/^\*\?\s\+//'
+
+;-------------------------------------------------------------------------------
+; remote
+;-------------------------------------------------------------------------------
+% git-remote, common
+
+# List git remotes
+git remote -v
+
+;-------------------------------------------------------------------------------
+; config
+;-------------------------------------------------------------------------------
+% git-config, common
+
+# Set global user name
+git config --global user.name "<full_name>"
+
+# Set global user email
+git config --global user.email <email>
+
+# Set repository-specific user name
+git config user.name "<full_name>"
+
+# Set repository-specific user email
+git config user.email <email>
