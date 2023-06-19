@@ -288,11 +288,12 @@ inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " CoC mappings
-nnoremap <Leader>sr <Plug>(coc-rename)
-nnoremap <silent> <Leader>sd :call CocActionAsync('doHover')<CR>
-nnoremap <silent> <Leader>sjd :call CocAction('jumpDefinition')<CR>
-nnoremap <silent> <Leader>sji :call CocAction('jumpImplementation')<CR>
-nnoremap <silent> <Leader>sjr :call CocAction('jumpReferences')<CR>
+nnoremap <silent> <Leader>sr <Plug>(coc-rename)
+nnoremap <silent> <Leader>sd :call CocActionAsync('definitionHover')<CR>
+nnoremap <silent> <Leader>sjd <Plug>(coc-definition)
+nnoremap <silent> <Leader>sji <Plug>(coc-implementation)
+nnoremap <silent> <Leader>sjr <Plug>(coc-references)
+nnoremap <silent> <Leader>sf <Plug>(coc-format)
 nnoremap <silent> <Leader>sa <Plug>(coc-codeaction-line)
 xnoremap <silent> <Leader>sa <Plug>(coc-codeaction-selected)
 nnoremap <silent> <Leader>sA <Plug>(coc-codeaction)
