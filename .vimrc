@@ -325,6 +325,7 @@ vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(
 let g:coc_global_extensions = [
     \ 'coc-json', 
     \ 'coc-pyright', 
+    \ 'coc-pydocstring',
     \ 'coc-vimtex',
     \ ]
 
