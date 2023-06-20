@@ -26,8 +26,13 @@ is_in_git_repo() {
 fgst() {
     # "Nothing to see here, move along"
     is_in_git_repo || return
-    git status -s | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%}\
-        --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS" fzf -m "$@" | awk '{print $2}'
+
+    local cmd="${FZF_CTRL_T_COMMAND:-"command git status -s"}"
+
+    eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_CTRL_T_OPTS" fzf -m "$@" | while read -r item; do
+        echo "$item" | awk '{print $2}'
+    done
+    echo
 }
 
 #==============================================================================
@@ -108,8 +113,8 @@ export FZF_ALT_C_COMMAND="fd --type d --follow --exclude .git"
 # Syntax hihglighting in preview window
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always {}'"
 
-# Show directory contents with 'tree'
-export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
+# Show directory contents with 'exa --tree'
+export FZF_ALT_C_OPTS="--preview 'exa --tree {} | head -200'"
 
 # Use fd for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
@@ -134,8 +139,8 @@ eval "$(navi widget zsh)"
 # Load zoxide zsh integration
 eval "$(zoxide init zsh)"
 
-# Use tree in fzf preview
-_ZO_FZF_PREVIEW='awk "{print \$2}" <<< {} | xargs tree -C | head -100'
+# Use 'exa --tree' in fzf preview
+_ZO_FZF_PREVIEW='awk "{print \$2}" <<< {} | xargs exa --tree | head -100'
 export _ZO_FZF_OPTS="--layout=reverse --height=40% --preview '$_ZO_FZF_PREVIEW'"
 
 #==============================================================================
