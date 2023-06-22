@@ -20,7 +20,7 @@ unzip <zip_file> -d <output_dir>
 # List ZIP file contents
 unzip -l <zip_file>
 
-$ zip_file: fd -e zip -X printf "'%s'\n"
+$ zip_file: fd -e zip -X printf '%q\n'
 
 ;-------------------------------------------------------------------------------
 ; pdf
@@ -36,7 +36,7 @@ pdfjam <pdf_file> <page_ranges> -o <output_file>
 # Compress PDF file
 ps2pdf <pdf_file> <output_file>
 
-$ pdf_file: fd -e pdf -X printf "'%s'\n"
+$ pdf_file: fd -e pdf -X printf '%q\n'
 
 ;-------------------------------------------------------------------------------
 ; update

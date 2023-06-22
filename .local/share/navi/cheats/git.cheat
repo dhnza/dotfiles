@@ -6,7 +6,7 @@
 # Print commit history of a file
 git log --full-history -- <files>
 
-$ files: git ls-files
+$ files: git ls-files --- --map "xargs -d '\n' printf %q"
 
 # Stage all changed tracked files
 git add --update
@@ -14,7 +14,7 @@ git add --update
 # Ignore any changes to files
 git update-index --skip-worktree <modified-files>
 
-$ modified-files: git ls-files -m
+$ modified-files: git ls-files -m --- --map "xargs -d '\n' printf %q"
 
 # Stop ignoring changes to files
 git update-index --no-skip-worktree <files>
