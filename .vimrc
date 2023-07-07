@@ -333,11 +333,10 @@ let g:coc_global_extensions = [
 " ------------------------------
 "    UltiSnips
 " ------------------------------
-" Set triggers that don't conflict with CoC
-let g:UltiSnipsExpandTrigger = '<C-k>'
+let g:UltiSnipsExpandTrigger = '<C-j>'
 let g:UltiSnipsListSnippets = '<C-y>'
-let g:UltiSnipsJumpForwardTrigger = '<C-k>'
-let g:UltiSnipsJumpBackwardTrigger = '<C-j>'
+let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 
 " Open snippet editor in split window
 let g:UltiSnipsEditSplit = 'context'
