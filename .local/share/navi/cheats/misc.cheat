@@ -7,6 +7,22 @@
 watch -d -n 1 <command>
 
 ;-------------------------------------------------------------------------------
+; tar
+;-------------------------------------------------------------------------------
+% tar, linux
+
+# Extract TAR file into current directory
+tar xvf <tar_file>
+
+# Extract TAR file into different directory
+tar xvf <tar_file> -C <output_dir>
+
+# List TAR file contents
+tar tvf <tar_file>
+
+$ tar_file: fd '.tar(.gz|.bz2)?$' -X printf '%q\n'
+
+;-------------------------------------------------------------------------------
 ; unzip
 ;-------------------------------------------------------------------------------
 % unzip, linux
