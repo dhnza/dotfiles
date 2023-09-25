@@ -43,6 +43,9 @@ $ zip_file: fd -e zip -X printf '%q\n'
 ;-------------------------------------------------------------------------------
 % pdf, linux
 
+# Convert images to PDF file
+convert <image_files> <output_pdf>
+
 # Extract all images from a PDF file
 pdfimages -p -all <pdf_file> <output_prefix>
 
@@ -53,6 +56,7 @@ pdfjam <pdf_file> <page_ranges> -o <output_file>
 ps2pdf <pdf_file> <output_file>
 
 $ pdf_file: fd -e pdf -X printf '%q\n'
+$ image_files: fd '(.png|.jpg|.jpeg)$' -X printf '%q\n' --- --multi --expand
 
 ;-------------------------------------------------------------------------------
 ; update
