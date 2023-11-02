@@ -63,6 +63,16 @@ My configuration expects the following packages are installed.
 To install (most of) these automatically, run the `.dotfiles-install.sh` script included in this repository.
 
 
+## Additional Configuration
+
+Some tools require additional manual configuration, as described below.
+
+
+### iTerm2
+
+See [iTerm2 preferences](../.config/iterm2/profile/README.md) for details on how to load and sync iTerm2 preferences with the files tracked by this repository.
+
+
 ## Sources
 
 1. https://www.anand-iyer.com/blog/2018/a-simpler-way-to-manage-your-dotfiles.html
