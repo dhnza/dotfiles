@@ -68,6 +68,13 @@ To install (most of) these automatically, run the `.dotfiles-install.sh` script 
 Some tools require additional manual configuration, as described below.
 
 
+### Meslo Nerd Font
+
+The [Powerlevel10k](https://github.com/romkatv/powerlevel10k) `zsh` theme requires the custom Meslo Nerd Font to correctly draw the various glyphs and symbols used by the theme.
+
+See the [Powerlevel10k docs](https://github.com/romkatv/powerlevel10k/blob/master/font.md) for details on how to install the font and enable it for your terminal app.
+
+
 ### iTerm2
 
 See [iTerm2 preferences](../.config/iterm2/profile/README.md) for details on how to load and sync iTerm2 preferences with the files tracked by this repository.
