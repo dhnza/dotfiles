@@ -1,3 +1,6 @@
+cheats:
+  paths:
+    - ~/.local/share/navi/cheats
 finder:
   command: fzf
   overrides: --height 30%

@@ -5,6 +5,9 @@
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+# Define navi config file path to ensure cross-platform compatibility
+export NAVI_CONFIG="$HOME/.config/navi/config.yaml"
+
 #==============================================================================
 #  Custom environment
 #==============================================================================
