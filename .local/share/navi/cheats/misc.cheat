@@ -74,4 +74,4 @@ $ image_files: fd '(.png|.jpg|.jpeg)$' -X printf '%q\n' --- --multi --expand
 % cargo, vim, common
 
 # Update local packages and plugins
-rustup update && cargo install $(cargo install --list | awk '/:$/ { print $1; }') && vim +PlugUpdate +CocUpdateSync +qa
+rustup update && cargo install $(cargo install --list | awk '/:$/ { print $1; }') && zplug update && vim +PlugUpdate +CocUpdateSync +qa

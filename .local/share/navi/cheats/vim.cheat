@@ -3,5 +3,7 @@
 # Open unmerged files in vim
 vim -p $(git status -s | awk '/^\s*U/ {print $2}') +'/^[<|=>]\{7\}' +'Git mergetool'
 
+% vim, common
+
 # Open remote file through ssh in vim
 vim scp://user@myserver[:port]/~/path/to/file.txt
