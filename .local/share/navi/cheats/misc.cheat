@@ -49,12 +49,22 @@ zip -r <input_dir> <output_zip>
 $ input_dir: fd -t d -d 1 -X printf '%q\n'
 
 ;-------------------------------------------------------------------------------
+; magick
+;-------------------------------------------------------------------------------
+% magick, linux
+
+# Convert images to PDF file
+magick <image_files> <output_pdf>
+
+# Convert images to GIF file
+magick -delay 10 -loop 0 <image_files> <output_gif>
+
+$ image_files: fd '(.png|.jpg|.jpeg)$' -X printf '%q\n' --- --multi --expand
+
+;-------------------------------------------------------------------------------
 ; pdf
 ;-------------------------------------------------------------------------------
 % pdf, linux
-
-# Convert images to PDF file
-convert <image_files> <output_pdf>
 
 # Extract all images from a PDF file
 pdfimages -p -all <pdf_file> <output_prefix>
@@ -66,7 +76,6 @@ pdfjam <pdf_file> <page_ranges> -o <output_file>
 ps2pdf <pdf_file> <output_file>
 
 $ pdf_file: fd -e pdf -X printf '%q\n'
-$ image_files: fd '(.png|.jpg|.jpeg)$' -X printf '%q\n' --- --multi --expand
 
 ;-------------------------------------------------------------------------------
 ; update
