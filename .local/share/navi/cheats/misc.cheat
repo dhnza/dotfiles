@@ -20,7 +20,7 @@ tar xvf <tar_file> -C <output_dir>
 # List TAR file contents
 tar tvf <tar_file>
 
-$ tar_file: fd '.tar(.gz|.bz2)?$' -X printf '%s\n' --- --expand
+$ tar_file: fd '.tar(.gz|.bz2)?$' --- --expand
 
 ;-------------------------------------------------------------------------------
 ; unzip
@@ -36,7 +36,7 @@ unzip <zip_file> -d <output_dir>
 # List ZIP file contents
 unzip -l <zip_file>
 
-$ zip_file: fd -e zip -X printf '%s\n' --- --expand
+$ zip_file: fd -e zip --- --expand
 
 ;-------------------------------------------------------------------------------
 ; zip
@@ -46,7 +46,7 @@ $ zip_file: fd -e zip -X printf '%s\n' --- --expand
 # Compress directory into ZIP file
 zip -r <input_dir> <output_zip>
 
-$ input_dir: fd -t d -d 1 -X printf '%s\n' --- --expand
+$ input_dir: fd -t d -d 1 --- --expand
 
 ;-------------------------------------------------------------------------------
 ; magick
@@ -59,7 +59,7 @@ magick <image_files> <output_pdf>
 # Convert images to GIF file
 magick -delay 10 -loop 0 <image_files> <output_gif>
 
-$ image_files: fd '(.png|.jpg|.jpeg)$' -X printf '%s\n' --- --expand --multi
+$ image_files: fd '(.png|.jpg|.jpeg)$' --- --expand --multi
 
 ;-------------------------------------------------------------------------------
 ; pdf
@@ -78,8 +78,8 @@ ps2pdf <pdf_file> <output_file>
 # Merge PDF files
 pdfunite <pdf_files> <output_file>
 
-$ pdf_file: fd -e pdf -X printf '%s\n'--- --expand
-$ pdf_files: fd -e pdf -X printf '%s\n' --- --expand --multi
+$ pdf_file: fd -e pdf --- --expand
+$ pdf_files: fd -e pdf --- --expand --multi
 
 ;-------------------------------------------------------------------------------
 ; update
