@@ -75,7 +75,11 @@ pdfjam <pdf_file> <page_ranges> -o <output_file>
 # Compress PDF file
 ps2pdf <pdf_file> <output_file>
 
+# Merge PDF files
+pdfunite <pdf_files> <output_file>
+
 $ pdf_file: fd -e pdf -X printf '%q\n'
+$ pdf_files: fd -e pdf -X printf '%q\n' --- --multi --expand
 
 ;-------------------------------------------------------------------------------
 ; update
