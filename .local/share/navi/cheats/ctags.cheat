@@ -1,0 +1,12 @@
+% ctags, common
+
+# Generate tags for a project
+ctags -R .
+
+# Generate tags for a project, excluding .gitignore files
+git ls-files --cached --others --exclude-standard | ctags -R --links=no -L -
+
+# Generate tags for all project files of specific languages
+ctags --languages=<ctags-languages> -R .
+
+$ ctags-languages: ctags --list-languages --- --multi --map "tr '\n' ','"

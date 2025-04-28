@@ -1,0 +1,4 @@
+% navi, common
+
+# Navigate to the navi cheats directory
+cd $(navi info cheats-path)
