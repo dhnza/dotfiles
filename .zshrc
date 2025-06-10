@@ -41,10 +41,10 @@ fgst() {
 # Use dotfiles command to manage the dotfiles repo
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
-alias ls='exa'
-alias ll='exa -lF --git'
-alias l='exa -lFa --git'
-alias tree='exa --tree'
+alias ls='eza'
+alias ll='eza -lF --git'
+alias l='eza -lFa --git'
+alias tree='eza --tree'
 
 alias bcl='bc -l'
 alias grin='grep -rin'
@@ -113,8 +113,8 @@ export FZF_ALT_C_COMMAND="fd --type d --follow --exclude .git"
 # Syntax hihglighting in preview window
 export FZF_CTRL_T_OPTS="--preview 'bat --style=numbers --color=always {}'"
 
-# Show directory contents with 'exa --tree'
-export FZF_ALT_C_OPTS="--preview 'exa --tree {} | head -200'"
+# Show directory contents with 'eza --tree'
+export FZF_ALT_C_OPTS="--preview 'eza --tree {} | head -200'"
 
 # Use fd for listing path candidates.
 # - The first argument to the function ($1) is the base path to start traversal
@@ -139,8 +139,8 @@ eval "$(navi widget zsh)"
 # Load zoxide zsh integration
 eval "$(zoxide init zsh)"
 
-# Use 'exa --tree' in fzf preview
-_ZO_FZF_PREVIEW='awk "{print \$2}" <<< {} | xargs exa --tree | head -100'
+# Use 'eza --tree' in fzf preview
+_ZO_FZF_PREVIEW='awk "{print \$2}" <<< {} | xargs eza --tree | head -100'
 export _ZO_FZF_OPTS="--layout=reverse --height=40% --preview '$_ZO_FZF_PREVIEW'"
 
 #==============================================================================

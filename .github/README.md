@@ -55,7 +55,7 @@ My configuration expects the following packages are installed.
     - `ripgrep`
     - `bat`
     - `git-delta`
-    - `exa`
+    - `eza`
     - `zoxide`
     - `navi`
 - [universal-ctags](https://github.com/universal-ctags/ctags)

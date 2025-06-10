@@ -58,7 +58,7 @@ jobs:
         command -v rg
         command -v bat
         command -v delta
-        command -v exa
+        command -v eza
         command -v zoxide
         command -v navi
         # Check vim plugins

@@ -73,7 +73,7 @@ fi
 
 # rust packages
 chk_command "cargo"
-cargo install fd-find ripgrep bat git-delta exa zoxide navi
+cargo install fd-find ripgrep bat git-delta eza zoxide navi
 
 # vim plugins
 vim +PlugUpdate +'w! /tmp/vim-plug.log' +qall <<< "\n" > /dev/null
