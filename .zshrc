@@ -42,8 +42,8 @@ fgst() {
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 alias ls='eza'
-alias ll='eza -lF --git'
-alias l='eza -lFa --git'
+alias ll='eza -lF --git --icons=auto'
+alias l='eza -alF --git --icons=auto'
 alias tree='eza --tree'
 
 alias bcl='bc -l'
