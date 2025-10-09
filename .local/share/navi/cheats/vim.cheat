@@ -1,7 +1,7 @@
 % vim, git, common
 
 # Open unmerged files in vim
-vim -p $(git status -s | awk '/^\s*U/ {print $2}') +'/^[<|=>]\{7\}' +'Git mergetool'
+vim -p $(git status -s | awk '/^\s*[UA]/ {print $2}') +'/^[<|=>]\{7\}' +'Git mergetool'
 
 % vim, common
 
