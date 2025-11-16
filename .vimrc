@@ -173,9 +173,12 @@ Plug 'airblade/vim-gitgutter'
 " Pretty status line
 Plug 'itchyny/lightline.vim'
 
-" FZF, both command and plugin installation
+" FZF command
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+
+" FZF integration
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.9' }
 
 " Latex integration
 Plug 'lervag/vimtex'
@@ -192,8 +195,10 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 " Modern IDE features
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Snippets
-Plug 'SirVer/ultisnips'
+" Agentic AI features
+Plug 'nvim-lua/plenary.nvim'
+Plug 'olimorris/codecompanion.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 
 " Color schemes
 Plug 'altercation/vim-colors-solarized'
@@ -324,22 +329,38 @@ vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(
 
 " CoC extensions
 let g:coc_global_extensions = [
-    \ 'coc-json', 
-    \ 'coc-pyright', 
+    \ 'coc-json',
+    \ 'coc-pyright',
     \ 'coc-pydocstring',
     \ 'coc-vimtex',
     \ ]
 
 " ------------------------------
-"    UltiSnips
+"    CodeCompanion
 " ------------------------------
-let g:UltiSnipsExpandTrigger = '<C-j>'
-let g:UltiSnipsListSnippets = '<C-y>'
-let g:UltiSnipsJumpForwardTrigger = '<C-j>'
-let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+" Basic setup
+if has('nvim')
+lua << EOF
+  require("codecompanion").setup({
+  strategies = {
+    chat = {
+      opts = {
+        completion_provider = "coc",
+      },
+    },
+  },
+})
+EOF
+endif
 
-" Open snippet editor in split window
-let g:UltiSnipsEditSplit = 'context'
+" CodeCompanion mappings
+nnoremap <silent> <Leader>aa :CodeCompanionActions<CR>
+vnoremap <silent> <Leader>aa :<C-U>CodeCompanionActions<CR>
+nnoremap <silent> <Leader>ac :CodeCompanionChat Toggle<CR>
+vnoremap <silent> <Leader>ac :<C-U>CodeCompanionChat Toggle<CR>
+
+" Add selected text to chat context
+vnoremap <silent> ga :<C-U>CodeCompanionChat Add<CR>
 
 " ------------------------------
 "    Vim-Traces
@@ -382,30 +403,23 @@ imap <silent><script><expr> <C-l> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
 
 " ------------------------------
-"            FZF
+"    Telescope
 " ------------------------------
 " Search files
-nnoremap <Leader>f :Files<CR>
+nnoremap <Leader>f <CMD>Telescope find_files<CR>
 " Search inisde files
-nnoremap <Leader>g :Rg<CR>
+nnoremap <Leader>g <CMD>Telescope live_grep<CR>
 " Search lines in open buffers
-nnoremap <Leader>l :BLines<CR>
-nnoremap <Leader>L :Lines<CR>
+nnoremap <Leader>l <CMD>Telescope current_buffer_fuzzy_find<CR>
 " Search vim commands
-nnoremap <Leader>; :Commands<CR>
+nnoremap <Leader>; <CMD>Telescope commands<CR>
 " Search open buffers
-nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>b <CMD>Telescope buffers<CR>
 " Search through tags
-nnoremap <Leader>t :BTags<CR>
-nnoremap <Leader>T :Tags<CR>
+nnoremap <Leader>t <CMD>Telescope current_buffer_tags<CR>
+nnoremap <Leader>T <CMD>Telescope tags<CR>
 " Search through help tags
-nnoremap <Leader>H :Helptags<CR>
-" Search through snippets
-nnoremap <Leader>z :Snippets<CR>
-inoremap <C-z> <C-o>:Snippets<CR>
-
-" Run highlighted command directly
-let g:fzf_commands_expect = 'alt-enter'
+nnoremap <Leader>H <CMD>Telescope help_tags<CR>
 
 " ------------------------------
 "    Tabularize

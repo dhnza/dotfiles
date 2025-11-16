@@ -2,7 +2,7 @@
 #  Environment Variables
 #==============================================================================
 # Use vim as default editor in git and other programs
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 
 # Define navi config file path to ensure cross-platform compatibility
