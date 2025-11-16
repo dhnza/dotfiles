@@ -1,3 +1,6 @@
 {
-    "pydocstring.formatter": "numpy"
+    "pydocstring.formatter": "numpy",
+    "pyright.inlayHints.functionReturnTypes": true,
+    "pyright.inlayHints.parameterTypes": true,
+    "pyright.inlayHints.variableTypes": false
 }
