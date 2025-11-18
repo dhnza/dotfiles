@@ -406,10 +406,36 @@ let g:copilot_no_tab_map = v:true
 " ------------------------------
 "    Telescope
 " ------------------------------
-" Use fzf native extension
+" Configure plugin in lua
 if has('nvim')
 lua << EOF
-  require("telescope").load_extension("fzf")
+  -- Use fzf native extension
+  local telescope = require("telescope")
+  telescope.load_extension("fzf")
+  -- Function to open selected items in tabs
+  local actions = require("telescope.actions")
+  local action_utils = require "telescope.actions.utils"
+  local function open_in_tabs(prompt_bufnr)
+    action_utils.map_selections(prompt_bufnr, function(entry, index)
+      vim.cmd("tabedit " .. vim.fn.fnameescape(entry.path))
+    end)
+    vim.cmd("stopinsert")
+  end
+  -- Configure key mappings
+  telescope.setup({
+    defaults = {
+      mappings = {
+        i = {
+          ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+          ["<C-t>"] = open_in_tabs,
+        },
+        n = {
+          ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+          ["<C-t>"] = open_in_tabs,
+        },
+      },
+    },
+  })
 EOF
 endif
 
