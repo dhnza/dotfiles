@@ -176,9 +176,10 @@ Plug 'itchyny/lightline.vim'
 " FZF command
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-" FZF integration
+" FZF search
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.9' }
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install' }
 
 " Latex integration
 Plug 'lervag/vimtex'
@@ -405,6 +406,13 @@ let g:copilot_no_tab_map = v:true
 " ------------------------------
 "    Telescope
 " ------------------------------
+" Use fzf native extension
+if has('nvim')
+lua << EOF
+  require("telescope").load_extension("fzf")
+EOF
+endif
+
 " Search files
 nnoremap <Leader>f <CMD>Telescope find_files<CR>
 " Search inisde files
