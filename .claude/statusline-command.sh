@@ -12,7 +12,15 @@ used_pct=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
 # Shorten path: replace $HOME with ~, then truncate every component except the
 # last to its first character (matches Powerlevel10k's truncate_from_right).
 short_path() {
-    local p="${1/#$HOME/~}"
+    # Prefix-strip rather than ${1/#$HOME/~}: bash 4+ tilde-expands an
+    # unescaped ~ in a substitution replacement; bash 3.2 does not.
+    local p="$1"
+    case "$HOME" in "") ;; *)
+        case "$p" in
+            "$HOME")    p="~" ;;
+            "$HOME"/*)  p="~/${p#"$HOME"/}" ;;
+        esac
+    esac
     echo "$p" | awk -F'/' '{
         out = ""
         for (i = 1; i <= NF; i++) {
@@ -23,12 +31,13 @@ short_path() {
     }'
 }
 
-# Folder icon mirrors p10k nerdfont-v3 dir segment (home / sub / etc / other)
+# Folder icon (p10k nerdfont-v3 dir segment) as \x byte-literals for portability:
+# home U+F015, etc U+F013, sub U+F07C, other U+F115
 case "$cwd" in
-    "$HOME")        dir_icon=$'' ;;
-    /etc|/etc/*)    dir_icon=$'' ;;
-    "$HOME"/*)      dir_icon=$'' ;;
-    *)              dir_icon=$'' ;;
+    "$HOME")        dir_icon=$'\xef\x80\x95' ;;
+    /etc|/etc/*)    dir_icon=$'\xef\x80\x93' ;;
+    "$HOME"/*)      dir_icon=$'\xef\x81\xbc' ;;
+    *)              dir_icon=$'\xef\x84\x95' ;;
 esac
 dir_part=$'\033[34m'"${dir_icon} $(short_path "$cwd")"$'\033[0m'
 
@@ -88,7 +97,7 @@ if [ -n "$used_pct" ]; then
         else                         bar+="${ramp[u]}"
         fi
     done
-    icon=$'\U000F035B'   # nf-md-memory: context window = token memory
+    icon=$'\xf3\xb0\x8d\x9b'   # nf-md-memory (U+F035B); \x bytes work on bash 3.2 (no $'\U')
     if [ "$used_int" -ge 80 ]; then
         ctx_part=$'\033[31m'"${icon} ${bar} ${used_int}"$'%\033[0m'
     elif [ "$used_int" -ge 50 ]; then
