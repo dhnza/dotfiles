@@ -1,0 +1,18 @@
+onboarding = false
+
+[theme]
+name = "one-dark"
+auto_switch = false
+
+[ui.toast]
+delivery = "system"
+
+[ui]
+status_indicators = "symbols"
+sidebar_width = 34
+sidebar_max_width = 44
+prompt_new_tab_name = false
+
+[keys]
+prefix = "ctrl+f"
+toggle_sidebar = "ctrl+s"
